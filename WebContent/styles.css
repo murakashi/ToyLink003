@@ -1,0 +1,390 @@
+﻿@charset "UTF-8";
+
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
+
+html, body {
+	color: #111111;
+	font-family: "Noto Sans JP", "游ゴシック Medium", "游ゴシック";
+	font-size: large;
+	font-weight: 700;
+	margin: 0;
+}
+
+
+h1 {
+	display: inline;
+
+}
+
+h2 {
+	display: inline;
+}
+
+h3 {
+	display: inline;
+}
+
+/*ヘッダー*/
+#header {
+	text-align: left;
+	position: absolute;
+	top: 0;
+	background-color: #FFCC00;
+	width: 100%;
+	height: 110px;
+	font-family: "arial black";
+}
+/*フッター*/
+#footer {
+	text-align: center;
+	position: static;
+	bottom: 0;
+	background-color: #FFCC00;
+	width: 100%;
+	height: 50px;
+}
+
+#wrapper {
+	width: 100%; /* 幅をウィンドウサイズに合わせて100％に指定 */
+	max-width: 900px; /* 追加：幅は最大で800pxまで広がるようにする */
+	min-width: 300px; /* 追加：幅は最小で300pxまで狭まるようにする */
+	margin: 0 auto;
+	margin-top: 110px;
+	background: white;
+	padding: 0 0 50px;
+	/*overflow:auto;*/
+	/*border:1px solid black;*/
+}
+
+/*ボタンを横並びにする*/
+form, fieldset {
+	display: inline;
+	border: none;
+	margin: 0px;
+}
+
+/*テーブルの枠線を表示しない*/
+#bordernone {
+	border: none;
+}
+
+/*テーブルの枠線を表示する*/
+#border {
+	border: 1px #555555 solid;
+	border-collapse: collapse;
+	height: 55px;
+}
+
+/*テーブルの行ごとに色を変える*/
+.t-line th:nth-child td { /*奇数行*/
+	background-color: #A4C6FF;
+}
+
+.t-line tr:nth-child(odd) td { /*奇数行*/
+	background-color: #fff;
+}
+
+.t-line tr:nth-child(even) td { /*偶数行*/
+	background-color: #A4C6FF;
+}
+
+/*メニューボタンの配置*/
+.controls {
+	float: right;
+	margin-top: 25px;
+	margin-right: 80px;
+}
+/*回り込み防止*/
+center {
+	clear: both;
+}
+
+/*ボタンデザイン*/
+button::before, button::after {
+	box-sizing: border-box;
+}
+
+.buttonA {
+	margin: 3px 3px 3px 3px;
+	border: none;
+	box-sizing: border-box;
+	width: 100px;
+	height: 50px;
+	display: inline-block;
+	font-size: 18px;
+	font-weight: bold;
+	position: relative;
+	cursor: pointer;
+	position: relative;
+	background-color: #0056af;
+	border-radius: 4px;
+	color: #fff;
+	line-height: 52px;
+	-webkit-transition: none;
+	transition: none;
+	box-shadow: 0 3px 0 #000066;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+}
+/*ボタンにカーソルを合わせた時の色*/
+.buttonA:hover {
+	background-color: #0056af;
+	box-shadow: 0 3px 0 #000066
+}
+/*ボタンを押したときのアクション*/
+.buttonA:active {
+	top: 3px;
+	box-shadow: none
+}
+
+.buttonB {
+	width: 100px;
+	height: 30px;
+	border: 1px solid #15aeec;
+	background-color: #49c0f0;
+	background-image: -webkit-linear-gradient(top, #49c0f0, #2cafe3);
+	background-image: linear-gradient(to bottom, #49c0f0, #2cafe3);
+	border-radius: 4px;
+	color: #fff;
+	font-size: 18px;
+	/*line-height: 50px;*/
+	-webkit-transition: none;
+	transition: none;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+	margin-right: 35px;
+	float: right;
+}
+/*ボタンにカーソルを合わせた時の色*/
+.buttonB:hover {
+	border: 1px solid #1090c3;
+	background-color: #1ab0ec;
+	background-image: -webkit-linear-gradient(top, #1ab0ec, #1a92c2);
+	background-image: linear-gradient(to bottom, #1ab0ec, #1a92c2);
+}
+/*ボタンを押したときのアクション*/
+.buttonB:active {
+	background: #1a92c2;
+	box-shadow: inset 0 3px 5px rgba(0, 0, 0, .2);
+	color: #1679a1;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, .5);
+}
+
+.buttonC {
+	width: 100px;
+	height: 30px;
+	border: 1px solid #15aeec;
+	background-color: #49c0f0;
+	background-image: -webkit-linear-gradient(top, #49c0f0, #2cafe3);
+	background-image: linear-gradient(to bottom, #49c0f0, #2cafe3);
+	border-radius: 4px;
+	color: #fff;
+	font-size: 18px;
+	/*line-height: 50px;*/
+	-webkit-transition: none;
+	transition: none;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+	margin-right: 35px;
+	float: right;
+}
+/*ボタンにカーソルを合わせた時の色*/
+.buttonC:hover {
+	border: 1px solid #1090c3;
+	background-color: #1ab0ec;
+	background-image: -webkit-linear-gradient(top, #1ab0ec, #1a92c2);
+	background-image: linear-gradient(to bottom, #1ab0ec, #1a92c2);
+}
+/*ボタンを押したときのアクション*/
+.buttonC:active {
+	background: #1a92c2;
+	box-shadow: inset 0 3px 5px rgba(0, 0, 0, .2);
+	color: #1679a1;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, .5);
+}
+
+/*テキストフォームデザイン*/
+.text {
+	border: 0;
+	font-size: 1em;
+	font-family: Arial, sans-serif;
+	color: #444444;
+	border: solid 1px #ccc;
+	padding: 0;
+	/*margin:0 0 0px;*/
+	width: 150px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 4px;
+}
+
+/*セレクトボックスデザイン*/
+select {
+	width: 152px;
+	font-size: 0.9em;
+	color: #444444;
+	border: 1px solid #ccc;
+	background: Transparent;
+	-moz-box-shadow: inset 1px 4px 9px -6px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: inset 1px 4px 9px -6px rgba(0, 0, 0, 0.5);
+	box-shadow: inset 1px 4px 9px -6px rgba(0, 0, 0, 0.5);
+}
+
+/* チェックボックスデザイン*/
+.chkbox input[type="checkbox"] {
+	display: none;
+}
+
+.chkbox label {
+	position: relative;
+	display: inline-block;
+	padding: 3px 3px 3px 3px;
+	cursor: pointer;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.chkbox label::before {
+	position: absolute;
+	content: '';
+	top: 60%;
+	left: 0;
+	width: 16px;
+	height: 16px;
+	margin-top: -13px;
+	background: #fff;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	width: 16px;
+	left: 0;
+}
+
+.chkbox input[type="checkbox"]:checked+label::after {
+	position: absolute;
+	content: '';
+	top: -7px;
+	left: 3px;
+	width: 13px;
+	height: 5px;
+	border-left: 2px solid #444444;
+	border-bottom: 2px solid #444444;
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+/*メニューボタンのデザイン*/
+.square_btn {
+	display: inline-block;
+	padding: 0.5em 0.5em 0.5em 0.5em;
+	width: 140px;
+	height: 140px;
+	font-weight: 900;
+	font-size: 20px;
+	text-decoration: none;
+	background: #000080; /*ボタン色*/
+	color: #fff;
+	border-bottom: solid 4px #627295;
+	border-radius: 3px;
+}
+
+.square_btn:hover { /*ボタンを押したとき*/
+	-ms-transform: translateY(4px);
+	-webkit-transform: translateY(4px);
+	transform: translateY(4px); /*下に動く*/
+	border-bottom: none; /*線を消す*/
+}
+
+/*囲み枠のデザイン*/
+/*新規登録、売上*/
+#Enclose {
+	margin: 0 auto;
+	margin-top: 100px;
+	padding: 20px;
+	width: 480px;
+	height: 400px;
+	/*二重線枠*/
+	border: 10px double #CCCCCC;
+	    margin: 3em 0;
+	    padding: 3em;
+
+	/*一本線の枠線*/
+	/*border: #FF0000 solid 4px;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	padding: 20px;
+	font-size: 90%;*/
+}
+/*完了画面、エラー画面の囲み枠*/
+#Enclose2 {
+	margin: 0 auto;
+	margin-top: 100px;
+	padding: 20px;
+	width: 480px;
+	height: 200px;
+	/*二重線枠*/
+	border: 10px double #CCCCCC;
+	    margin: 2em 0;
+	    padding: 2em;
+}
+
+/*検索3*/
+/*在庫、*/
+#Enclose3 {
+	margin: 0 auto;
+	margin-top: 70px;
+	padding: 20px;
+	width: 470px;
+	height: 250px;
+	border: 10px double #CCCCCC;
+	    margin: 2em 0;
+	    padding: 2em;
+}
+
+/*検索2*/
+/*発注、売上一覧、商品一覧*/
+#Enclose4 {
+	margin: 0 auto;
+	margin-top: 50px;
+	padding: 10px;
+	width: 455px;
+	height: 200px;
+	border: 10px double #CCCCCC;
+	    margin: 2em 0;
+	    padding: 2em;
+}
+/*検索1*/
+/*売上の月間、年間*/
+#Enclose5 {
+	margin: 0 auto;
+	margin-top: 50px;
+	padding: 20px;
+	width: 400px;
+	height: 160px;
+	border: 10px double #CCCCCC;
+	    margin: 2em 0;
+	    padding: 2em;
+}
+
+/*ヘッダー文字の縁取り*/
+.outline {
+	text-shadow: black 1px 1px 0px, black -1px 1px 0px, black 1px -1px 0px,
+		black -1px -1px 0px;
+}
+
+/*検索条件を並べる*/
+ul li {
+	list-style: none;
+}
+
+ul label {
+	margin-right: 0px;
+	width: 200px;
+}
+
+ul {
+	width: 280px;
+	margin: 0 auto;
+}
