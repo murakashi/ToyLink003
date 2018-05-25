@@ -102,6 +102,7 @@ public class UriageYear extends HttpServlet {
 
 
 
+		//年ごとの売り上げの一覧を取得してJSPに渡す
 		ArrayList<String[]> n = db.getUriageYearData();
 		session.setAttribute("URIAGEY", n);
 

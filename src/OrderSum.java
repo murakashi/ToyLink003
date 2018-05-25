@@ -59,7 +59,8 @@ public class OrderSum extends HttpServlet {
 
 		int[] num_arr = new int[count_arr.length];
 
-		int sum = 0;
+		//int sum = 0;
+		long sum = 0;
 
 		DBAccess db = new DBAccess();
 

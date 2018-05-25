@@ -100,12 +100,12 @@
 							<%
 								if (siire_tanka == null) {
 							%>
-							<td><input type="number" name="siire_tanka" size="6" min="1"
+							<td><input type="number" name="siire_tanka" size="6" min="1" maxlength="6"
 								required>円</td>
 							<%
 								} else {
 							%>
-							<td><input type="number" name="siire_tanka" size="6"
+							<td><input type="number" name="siire_tanka" size="6" maxlength="6"
 								value="<%=siire_tanka%>" min="1" required>円</td>
 							<%
 								}
@@ -117,12 +117,12 @@
 							<%
 								if (h_tanka == null) {
 							%>
-							<td><input type="number" name="h_tanka" size="6" min="1" required>円</td>
+							<td><input type="number" name="h_tanka" size="6" min="1" maxlength="6" required>円</td>
 							<%
 								} else {
 							%>
 							<td><input type="number" name="h_tanka" size="6"
-								value="<%=h_tanka%>" min="1" required>円</td>
+								value="<%=h_tanka%>" min="1" maxlength="6" required>円</td>
 							<%
 								}
 							%>
@@ -133,12 +133,12 @@
 							<%
 								if (safe_zaiko == null) {
 							%>
-							<td><input type="number" name="safe_zaiko" size="6" min="1" required>個</td>
+							<td><input type="number" name="safe_zaiko" size="6" min="1" maxlength="3" required>個</td>
 							<%
 								} else {
 							%>
 							<td><input type="number" name="safe_zaiko" size="6"
-								value="<%=safe_zaiko%>" min="1" required>個</td>
+								value="<%=safe_zaiko%>" min="1" maxlength="3" required>個</td>
 							<%
 								}
 							%>

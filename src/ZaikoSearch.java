@@ -67,7 +67,7 @@ public class ZaikoSearch extends HttpServlet {
 							session.removeAttribute("c_id");
 						}
 					//}
-					request.getRequestDispatcher("menu.jsp").forward(request, response);
+					request.getRequestDispatcher("Menu").forward(request, response);
 				}
 				else if (bname.equals("検索")) {
 					ArrayList<SyouhinBean> syouhinlist = new ArrayList<SyouhinBean>();

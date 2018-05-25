@@ -65,7 +65,7 @@ public class Syohin extends HttpServlet {
 						session.removeAttribute("syohindata");
 					}
 				}
-				request.getRequestDispatcher("menu.jsp").forward(request, response);
+				request.getRequestDispatcher("Menu").forward(request, response);
 			}
 		    else if(bname.equals("商品一覧") ||
 		    		bname.equals("いいえ") ||

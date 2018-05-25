@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import bean.SyouhinBean;
-
 /**
  * Servlet implementation class Menu
  */
@@ -36,9 +34,11 @@ public class Menu extends HttpServlet {
 		HttpSession session = request.getSession();
 
         DBAccess db = new DBAccess();
-        ArrayList<SyouhinBean> zaiko = db.select_SyohinA();
 
-        if(zaiko.size() > 0) {
+        ArrayList<int[]> risk_zaiko = db.getRiskData();
+
+        /***********危険在庫になっているものが1つでもあればアラートメッセージを設定する**************/
+        if(risk_zaiko.size() > 0) {
         	session.setAttribute("zaiko00","安全在庫数を下回っている商品があります。確認してください。");
         }else {
         	session.setAttribute("zaiko00","");
@@ -81,6 +81,17 @@ public class Menu extends HttpServlet {
 			session.removeAttribute("safe_zaiko");
 		}
 
+		if(session.getAttribute("syouID") != null) {
+			session.removeAttribute("syouID");
+		}
+
+		if(session.getAttribute("salNum") != null) {
+			session.removeAttribute("salNum");
+		}
+
+		if(session.getAttribute("tanka") != null) {
+			session.removeAttribute("tanka");
+		}
 
 		doGet(request, response);
 	}

@@ -70,19 +70,19 @@
 							<td>仕入基準単価</td>
 							<td>：</td>
 							<td><input type="number" name="baseprice" size="6"
-								value="<%=syohinlist.get(0).getBaseprice()%>" min="1" required>円</td>
+								value="<%=syohinlist.get(0).getBaseprice()%>" maxlength="6" min="1" required>円</td>
 						</tr>
 						<tr>
 							<td>販売単価</td>
 							<td>：</td>
 							<td><input type="number" name="htanka"  size="6"
-								value="<%=syohinlist.get(0).getHtanka()%>" min="1" required>円</td>
+								value="<%=syohinlist.get(0).getHtanka()%>" maxlength="6" min="1" required>円</td>
 						</tr>
 						<tr>
 							<td>安全在庫数</td>
 							<td>：</td>
 							<td><input type="number" name="safezaiko"  size="6"
-								value="<%=syohinlist.get(0).getSafezaiko()%>" min="1" required>個</td>
+								value="<%=syohinlist.get(0).getSafezaiko()%>" maxlength="3" min="1" required>個</td>
 						</tr>
 					</table>
 

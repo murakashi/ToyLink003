@@ -8,6 +8,45 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="styles.css">
 <title>発注状況</title>
+
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js">
+</script>
+
+<script language="javascript">
+
+$(function() {
+	var page = 0;
+	function draw() {
+		$('#page').html(page + 1);
+		$('tr').hide();
+		$('tr:first,tr:gt(' + page * 10 + '):lt(10)').show();
+	}
+	$('#prev').click(function() {
+		if (page > 0) {
+			page--;
+			draw();
+		}
+	});
+	$('#next').click(function() {
+		if (page < ($('tr').size() - 1) / 10 - 1) {
+			page++;
+			draw();
+		}
+	});
+	draw();
+});
+
+</script>
+
+<style>
+#prev, #next {
+	color: red;
+	cursor: pointer;
+}
+</style>
+
+
 </head>
 <body>
 
@@ -28,6 +67,9 @@
 		<br>
 		<center>
 			<h1>発注状況</h1>
+
+			<br> <span id="prev">前へ</span> <span id="page"></span> <span id="next">次へ</span>
+
 			<table class="t-line" id="border">
 				<tr id="border">
 					<th id="border" width=60><center>伝票ID</center></th>

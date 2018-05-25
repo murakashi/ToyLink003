@@ -40,14 +40,17 @@ public class TanaorosiFin extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 
-		String s_id = request.getParameter("s_id");
-		//String s_name = request.getParameter("s_name");
-		String tana_count = request.getParameter("tana_count");
-
 		DBAccess db = new DBAccess();
 
+		String s_id = request.getParameter("s_id");
+		//String s_name = request.getParameter("s_name");
+		int tana_count = Integer.parseInt(request.getParameter("tana_count"));//棚卸の実数を受け取る
+
+		//棚卸の数ひくシステム上の在庫数
+		tana_count = tana_count - db.select_Zaiko(s_id);
+
 		//棚卸による在庫テーブルへのインサートを行う
-		db.insert_Zaiko(s_id,tana_count);
+		db.insert_TanaZaiko(s_id,tana_count);
 
 		request.getRequestDispatcher("tanaorosiFin.jsp")
 		.forward(request, response);

@@ -10,7 +10,8 @@
 <jsp:useBean id="id" class="bean.OrderBean" scope="request" />
 <link rel="stylesheet" type="text/css" href="styles.css">
 <script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js">
+</script>
 <title>発注</title>
 
 <script>
@@ -36,12 +37,36 @@
 		draw();
 	});
 </script>
+
+<script>
+
+	function textControl(obj){
+
+		if(obj.checked == true){
+
+			//document.getElementById("s_name").value = "";
+			document.getElementById("s_name").disabled = true;
+			document.getElementById("category").disabled = true;
+
+		}
+		else{
+
+			document.getElementById("s_name").disabled = false;
+			document.getElementById("category").disabled = false;
+		}
+
+	}
+
+</script>
+
+
 <style>
 #prev, #next {
 	color: red;
 	cursor: pointer;
 }
 </style>
+
 </head>
 <body>
 	<div id="header">
@@ -74,15 +99,15 @@
 						<li><label>商品名&emsp;：</label><%
  	   if(name == null || name.equals("")){
  %>
- 	   		<input type="text" class="text" name="s_name">
+ 	   		<input type="text" class="text" name="s_name" id="s_name">
  <%
  	   }else{
  %>
-    			<input type="text" class="text" name="s_name" value="<%= name %>">
+    			<input type="text" class="text" name="s_name" id="s_name" value="<%= name %>">
  <%
  	   }
  %><br></li>
-						<li><label>カテゴリ：</label><select name="category">
+						<li><label>カテゴリ：</label><select name="category" id="category" >
  <%
  	if(c_id == null || c_id.equals("未選択")){
  %>
@@ -114,15 +139,14 @@
  		</select>
 					</ul>
 					<br> 安全在庫数が下回っている商品を表示する <input type="checkbox" name="dflg"
-						value="denger">
+						value="denger" onclick="textControl(this);">
 					<p>
 						<button class="buttonB" value="検索">検索</button>
 						<br>
 					</p>
 				</form>
 			</div>
-			<br> <span id="prev">前へ</span> <span id="page"></span> <span
-				id="next">次へ</span>
+			<br> <span id="prev">前へ</span> <span id="page"></span> <span id="next">次へ</span>
 			<form action="OrderCount" method="Post">
 
 				<table class="t-line" id="border">

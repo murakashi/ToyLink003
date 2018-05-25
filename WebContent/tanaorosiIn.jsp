@@ -50,7 +50,7 @@
 						</tr>
 						<tr>
 							<td>数量</td>
-							<td>&emsp;<input type="number" class="text" name="tana_count" required>
+							<td>&emsp;<input type="number" class="text" name="tana_count" min="0" required>
 							</td>
 						</tr>
 					</table>

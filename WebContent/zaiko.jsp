@@ -34,6 +34,28 @@
 		draw();
 	});
 </script>
+
+<script>
+
+	function textControl(obj){
+
+		if(obj.checked == true){
+
+			//document.getElementById("s_name").value = "";
+			document.getElementById("s_name").disabled = true;
+			document.getElementById("category").disabled = true;
+
+		}
+		else{
+
+			document.getElementById("s_name").disabled = false;
+			document.getElementById("category").disabled = false;
+		}
+
+	}
+
+</script>
+
 <style>
 #prev, #next {
 	color: red;
@@ -76,17 +98,17 @@
 					<%
 						if (s_name != null) {
 					%>
-					<li><label>商品名&emsp;：</label> <input type="text" class="text"
-						name="syouhin" value="<%=s_name%>"> <br></li>
+					<li><label>商品名&emsp;：</label>
+					<input type="text" class="text" name="syouhin" value="<%=s_name%>" id="s_name"> <br></li>
 					<%
 						} else {
 					%>
-					<li><label>商品名&emsp;：</label> <input type="text" class="text"
-						name="syouhin"> <br></li>
+					<li><label>商品名&emsp;：</label>
+					<input type="text" class="text" name="syouhin" id="s_name"> <br></li>
 					<%
 						}
 					%>
-					<li><label>カテゴリ：</label> <select name="category">
+					<li><label>カテゴリ：</label> <select name="category" id="category">
 							<%
 								if (c_id == null || c_id.equals("未選択")) {
 							%>
@@ -118,8 +140,9 @@
 				</ul>
 				<center>
 					<div class="chkbox">
-						<input type="checkbox" id="checkbox01" name="dflg" value="denger">安全在庫数が下回っている商品を表示する<label
-							for="checkbox01"></label>
+						<input type="checkbox" id="checkbox01" name="dflg" value="denger" onclick="textControl(this);">
+						安全在庫数が下回っている商品を表示する
+						<label for="checkbox01"></label>
 					</div>
 				</center>
 

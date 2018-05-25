@@ -34,12 +34,14 @@
 		draw();
 	});
 </script>
+
 <style>
 #prev, #next {
 	color: red;
 	cursor: pointer;
 }
 </style>
+
 </head>
 <body>
 

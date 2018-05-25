@@ -9,7 +9,34 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="styles.css">
 <title>支払状況</title>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js">
+</script>
+
 <script language="javascript">
+
+$(function() {
+	var page = 0;
+	function draw() {
+		$('#page').html(page + 1);
+		$('tr').hide();
+		$('tr:first,tr:gt(' + page * 10 + '):lt(10)').show();
+	}
+	$('#prev').click(function() {
+		if (page > 0) {
+			page--;
+			draw();
+		}
+	});
+	$('#next').click(function() {
+		if (page < ($('tr').size() - 1) / 10 - 1) {
+			page++;
+			draw();
+		}
+	});
+	draw();
+});
+
 
 function nyukin(oid){
 	var form = document.getElementById("Nyukin");
@@ -41,6 +68,14 @@ function isDate (str, delim) {
 	};
 
 </script>
+
+<style>
+#prev, #next {
+	color: red;
+	cursor: pointer;
+}
+</style>
+
 </head>
 <body>
 <div id="header">
@@ -61,7 +96,9 @@ function isDate (str, delim) {
 		%>
 		<center>
 			<h1>支払状況</h1>
-			<br> <br>
+			<br>
+			<br> <span id="prev">前へ</span> <span id="page"></span> <span id="next">次へ</span>
+			 <br>
 			<table id="border" class = "t-line" width = "800px">
 				<tr>
 					<th id="border"><center>伝票ID</center></th>

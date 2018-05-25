@@ -2,11 +2,13 @@
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class UriageIn
@@ -39,15 +41,22 @@ public class UriageFin extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 
-		String syouID = request.getParameter("syouID");
-		String day = request.getParameter("day");
-		String salNum = request.getParameter("salNum");
-		String tanka = request.getParameter("tanka");
-		String br= request.getParameter("break");
+		HttpSession session = request.getSession();
 
+		String syouID = request.getParameter("syouID");//商品ID取得
+		String day = request.getParameter("day");//売上日取得
+		int salNum = Integer.parseInt(request.getParameter("salNum"));//売上個数取得
+		int tanka = Integer.parseInt(request.getParameter("tanka"));//販売単価取得
+		String br= request.getParameter("break");//破損チェックボックスの値取得
+
+		/*******入力値をセッションに入れる********/
+		session.setAttribute("syouID", syouID+"");
+		session.setAttribute("salNum", salNum+"");
+		session.setAttribute("tanka", tanka+"");
 
 		String hason;
 
+		/*****破損チェックボックスのチェックの有無判断************/
 		if(br != null && br.equals("hason")) {
 			hason="1";
 		}else {
@@ -55,23 +64,32 @@ public class UriageFin extends HttpServlet {
 
 		}
 
-			int i = Integer.parseInt(tanka);
-			int n = Integer.parseInt(salNum);
+		DBAccess db = new DBAccess();
 
-			DBAccess da=new DBAccess();
+		int zaiko_count = db.select_Zaiko(syouID) - salNum;
 
-			int tax=da.getTax();
-			int taxOnly=i*tax/100;
-			int taxIn=i+taxOnly;
+		/*****売上数によって在庫数がマイナスになる場合、売上入力エラー画面に遷移する*****/
+		if(zaiko_count < 0) {
+			RequestDispatcher rd = request.getRequestDispatcher("uriageInError.jsp");
+			rd.forward(request, response);
+			return;
+		}
+
+		/*****税込価格を求める*****/
+		int tax=db.getTax();
+		int taxOnly=tanka*tax/100;
+		int taxIn=tanka+taxOnly;
 
 
-			da.register(syouID, day, salNum,tanka,hason,taxIn);
-			int salNum2=-n;
-			da.zaikoReduce(syouID, salNum2);
+		//売上テーブルにインサートする
+		db.register(syouID, day, salNum,tanka,hason,taxIn);
 
-			request.getRequestDispatcher("uriageFin.jsp")
-			.forward(request, response);
+		/****在庫にマイナスの数量に変換してインサートする******/
+		salNum = -salNum;
+		db.zaikoReduce(syouID, salNum);
 
+		request.getRequestDispatcher("uriageFin.jsp")
+		.forward(request, response);
 	}
 
 }

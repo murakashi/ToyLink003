@@ -7,8 +7,36 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="styles.css">
+
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js">
+</script>
+
 <title>支払詳細</title>
 <script language="javascript">
+
+$(function() {
+	var page = 0;
+	function draw() {
+		$('#page').html(page + 1);
+		$('tr').hide();
+		$('tr:first,tr:gt(' + page * 10 + '):lt(10)').show();
+	}
+	$('#prev').click(function() {
+		if (page > 0) {
+			page--;
+			draw();
+		}
+	});
+	$('#next').click(function() {
+		if (page < ($('tr').size() - 1) / 10 - 1) {
+			page++;
+			draw();
+		}
+	});
+	draw();
+});
+
 
 function nyukin(){
 	var setDate = document.getElementById("pay_date");
@@ -77,6 +105,8 @@ function isDate (str, delim) {
 			<td><h3><%=pay_list.get(0).getO_date()%></h3></td>
 			</tr>
 		</table>
+		<br> <span id="prev">前へ</span> <span id="page"></span> <span
+				id="next">次へ</span>
 		</center>
 		<br>
 		<center>

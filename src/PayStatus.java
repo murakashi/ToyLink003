@@ -64,7 +64,7 @@ public class PayStatus extends HttpServlet {
 
 		DBAccess db = new DBAccess();
 
-		float tax = db.select_tax();
+		float tax = db.select_tax();//消費税率取得
 
 		tax = 1 + (tax / 100);
 

@@ -27,24 +27,48 @@
 				<form action="UriageFin" method="POST">
 					<%
 						ArrayList<SyouhinBean> syouhinlist = (ArrayList<SyouhinBean>) session.getAttribute("syouhinlist");
+
+						String syouID = (String)session.getAttribute("syouID");
+						String salNum = (String)session.getAttribute("salNum");
+						String tanka = (String)session.getAttribute("tanka");
 					%>
 
 					<h1>売上入力</h1>
 					<br> <br>
 					<table id="bordernone">
 						<tr>
-							<td>商品ID</td>
+							<td>商品名</td>
 							<td>&emsp;<select name="syouID" required>
-									<option value="">未選択</option>
+<%
+							if(syouID == null || syouID.equals("")){
+%>
+									<option value="" selected="selected">未選択</option>
 
 									<%
 										for (SyouhinBean s : syouhinlist) {
 									%>
-									<option value="<%=s.getS_id()%>" required><%=s.getS_id()%>
-										<%
+									<option value="<%=s.getS_id()%>"><%=s.getS_name()%>
+<%
+										}
+							}else{
+%>
+									<option value="">未選択</option>
+
+									<%
+										for (SyouhinBean s : syouhinlist) {
+											if(s.getS_id() == Integer.parseInt(syouID)){
+
+									%>
+											<option value="<%=s.getS_id()%>" selected="selected"><%=s.getS_name()%></option>
+<%
+											}else{
+%>
+												<option value="<%=s.getS_id()%>"><%=s.getS_name()%></option>
+<%
 											}
-										%>
-									</option>
+										}
+							}
+%>
 							</select>
 							</td>
 						</tr>
@@ -57,16 +81,40 @@
 						</tr>
 						<tr>
 							<td>売上数</td>
+<%
+						if(salNum == null){
+%>
 							<td>&emsp;<input type="number" class="text" name="salNum"
-								min="1" required>
+								min="1" maxlength="7" required>
 							</td>
+<%
+						}else{
+%>
+							<td>&emsp;<input type="number" class="text" name="salNum" value="<%= salNum %>"
+									min="1" maxlength="7" required>
+							</td>
+<%
+						}
+%>
 						<tr>
 							<td>
 								<p /> 販売単価
 							</td>
+<%
+						if(tanka == null){
+%>
 							<td>&emsp;<input type="number" class="text" name="tanka"
-								min="1" required>
+								min="1" maxlength="7" required>
 							</td>
+<%
+						}else{
+%>
+							<td>&emsp;<input type="number" class="text" name="tanka" value="<%= tanka %>"
+									min="1" maxlength="7" required>
+							</td>
+<%
+						}
+%>
 						<tr>
 							<td>破損</td>
 							<td>

@@ -597,41 +597,6 @@ public class DBAccess {
 		return result;
 	}
 
-	/******************支払状況の情報（発注テーブルの入庫フラグが1のもの）をセレクトする（支払状況で使う）**************************/
-	/*public ArrayList<OrderBean> select_payList() {
-
-		sql = "select 伝票ID,仕入先名,sum(発注数量*仕入基準単価) as 合計金額 "+
-				"from 発注 inner join 仕入先マスタ "+
-				"on 発注.仕入先ID = 仕入先マスタ.仕入先ID "+
-				"inner join 商品マスタ "+
-				"on 発注.商品ID = 商品マスタ.商品ID "+
-				"where 入庫フラグ = '1' "+
-				"group by 伝票ID,仕入先名";
-
-		//selectした結果を格納する用
-		ArrayList<OrderBean> orderdetail_list = new ArrayList<OrderBean>();
-
-		try {
-			Statement stmt = objCon.createStatement();
-
-			ResultSet rs = stmt.executeQuery(sql);
-
-			while (rs.next()) {
-				OrderBean order = new OrderBean();
-				order.setO_id(rs.getInt("伝票ID"));
-				order.setSiire_name(rs.getString("仕入先名"));
-				order.setS_id(rs.getInt("合計金額"));
-				orderdetail_list.add(order);//配列をArrayListに詰める
-			}
-			rs.close();
-			stmt.close();
-		} catch (Exception objEx) {
-			//コンソールに「接続エラー内容」を表示
-			System.err.println(objEx.getClass().getName() + ":" + objEx.getMessage());
-		}
-		return orderdetail_list;
-	}*/
-
 	/**********消費税マスタから消費税率を求める（1.08）**********************************************/
 	public float select_tax() {
 
@@ -852,7 +817,7 @@ public class DBAccess {
 
 
 	/***売上を入力する（正常販売なので入庫フラグは0）*************************************************/
-	public int register(String syouID,String day,String salNum,String tanka,String hason,int taxIn) {
+	public int register(String syouID,String day,int salNum,int tanka,String hason,int taxIn) {
 
 		try {
 			Statement stmt = objCon.createStatement();
@@ -872,22 +837,28 @@ public class DBAccess {
 
 	}
 	/***危険在庫を見つける***********************************************************************/
-	public ArrayList<String[]> getRiskData(){
-		ArrayList<String[]> ret = new ArrayList<String[]>();
+	public ArrayList<int[]> getRiskData(){
+		ArrayList<int[]> ret = new ArrayList<int[]>();
 			try
 			{
 				Statement stmt = objCon.createStatement();
-				String sql ="select 商品マスタ.商品ID,安全在庫数,sum(在庫数) as 在庫数合計\r\n" +
-						"from 商品マスタ inner join 在庫 \r\n" +
-						"on 商品マスタ.商品ID = 在庫.商品ID where 削除フラグ=0\r\n" +
-						"group by 商品マスタ.商品ID,安全在庫数\r\n" +
-						"having sum(在庫数) < 安全在庫数";
+				String sql ="select 商品マスタ.商品ID,安全在庫数,sum(isnull(在庫数,0)+ isnull(a.発注数合計,0)) as 在庫数合計\r\n" +
+							"from 商品マスタ left outer join 在庫\r\n" +
+							"on 商品マスタ.商品ID = 在庫.商品ID\r\n" +
+							"left outer join (select 発注.商品ID,isnull(sum(発注数),0) as 発注数合計\r\n" +
+							"from 発注\r\n" +
+							"where 入庫フラグ = '0'\r\n" +
+							"group by 発注.商品ID) as a\r\n" +
+							"on 商品マスタ.商品ID = a.商品ID\r\n" +
+							"where 削除フラグ = '0'\r\n" +
+							"group by 商品マスタ.商品ID,安全在庫数\r\n" +
+							"having sum(isnull(在庫数,0)+ isnull(a.発注数合計,0)) < 安全在庫数";
 
 				ResultSet rset = stmt.executeQuery(sql);
 				while(rset.next())
 				{
-					String[] recdata = new String[1];
-					recdata[0] = rset.getString("商品ID");
+					int[] recdata = new int[1];
+					recdata[0] = rset.getInt("在庫数合計");
 					ret.add(recdata);
 				}
 				rset.close();
@@ -1097,6 +1068,54 @@ public class DBAccess {
 		return syohin_list;
 	}
 
+	/*****************在庫テーブルから商品IDをもとに在庫数を求める（棚卸で使う）*************/
+	public int select_Zaiko(String s_id) {
+
+		sql = "select 商品ID,sum(在庫数) as 在庫残量 " +
+			  "from 在庫 "+
+			  "where 商品ID = "+ s_id + " "+
+			  "group by 商品ID";
+
+		//selectした結果を格納する用
+		int zaiko_count = 0;
+
+		try {
+			Statement stmt = objCon.createStatement();
+
+			ResultSet rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				zaiko_count = rs.getInt("在庫残量");
+			}
+			rs.close();
+			stmt.close();
+		} catch (Exception objEx) {
+			//コンソールに「接続エラー内容」を表示
+			System.err.println(objEx.getClass().getName() + ":" + objEx.getMessage());
+		}
+		return zaiko_count;
+	}
+
+	/*****************棚卸の数を在庫テーブルにインサートする（棚卸で使う）***************/
+	public int insert_TanaZaiko(String s_id,int count) {
+
+		sql = "insert into 在庫 values((select max(入出庫ID)+1 from 在庫),"+ s_id +","+ count +")";
+
+		//selectした結果を格納する用
+		int result=0;
+		try {
+			Statement stmt = objCon.createStatement();
+
+			result = stmt.executeUpdate(sql);
+			//rs.close();
+			//stmt.close();
+		} catch (Exception objEx) {
+			//コンソールに「接続エラー内容」を表示
+			System.err.println(objEx.getClass().getName() + ":" + objEx.getMessage());
+		}
+		return result;
+	}
+
 	/******************商品マスタから検索条件を指定してセレクトする**************************/
 	public ArrayList<SyouhinBean> select_Single_Syohin(String s_id) {
 
@@ -1191,6 +1210,7 @@ public class DBAccess {
 		return syohin;
 	}
 
+	/***********危険在庫数になっているものをセレクトする（危険在庫アラートで使う）*******************/
 	public ArrayList<SyouhinBean> select_DengerSyohin() {
 
 		sql = "select 商品ID,商品名,カテゴリ名,仕入基準単価,販売単価,安全在庫数,在庫残量 from " +
@@ -1328,7 +1348,6 @@ public class DBAccess {
 
 			Statement stmt = objCon.createStatement();
 			 sql = "SELECT * FROM 開始年";
-
 
 			ResultSet rset = stmt.executeQuery(sql);
 			while(rset.next())
