@@ -7,12 +7,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="styles.css">
-<title>削除画面</title>
+<title>削除確認</title>
 </head>
 <body>
 	<div id="header">
 		<div class="outline">
-			<font size="7" color="white">&nbsp;STEPPY</font>
+			&nbsp;STEPPY
 			<div class="controls">
 				<form action="Menu" method="post">
 					<button class="buttonA" name="bname" value="メニュー">メニュー</button>
@@ -26,41 +26,38 @@
 		%>
 		<br>
 		<center>
-			<p class="example2">以下の内容の商品を削除します</p>
-			<table id="bordernone">
-				<tr>
-					<td>商品ID</td>
-					<td>：</td>
-					<td><%=syohinlist.get(0).getS_id()%></td>
-				<tr>
-					<td>商品名</td>
-					<td>：</td>
-					<td><%=syohinlist.get(0).getS_name()%></td>
-				</tr>
-				<tr>
-					<td>カテゴリ名</td>
-					<td>：</td>
-					<td><%=syohinlist.get(0).getC_id()%></td>
-				</tr>
-			</table>
-			<form action="SyohinDel" method="post">
-				<fieldset>
-					<button class="buttonA" name="bname" value="はい">削除</button>
-				</fieldset>
-			</form>
-			<form action="Syohin" method="post">
-				<fieldset>
-					<button class="buttonA" name="bname" value="いいえ">キャンセル</button>
-				</fieldset>
-			</form>
+			<div id="Enclose2">
+				<h3>以下の内容の商品を削除します</h3>
+				<table id="bordernone">
+					<tr>
+						<td>商品ID</td>
+						<td>：</td>
+						<td><%=syohinlist.get(0).getS_id()%></td>
+					<tr>
+						<td>商品名</td>
+						<td>：</td>
+						<td><%=syohinlist.get(0).getS_name()%></td>
+					</tr>
+					<tr>
+						<td>カテゴリ名</td>
+						<td>：</td>
+						<td><%=syohinlist.get(0).getC_id()%></td>
+					</tr>
+				</table>
+				<form action="SyohinDel" method="post">
+					<fieldset>
+						<button class="buttonA" name="bname" value="はい">削除</button>
+					</fieldset>
+				</form>
+				<form action="Syohin" method="post">
+					<fieldset>
+						<button class="buttonA" name="bname" value="いいえ">キャンセル</button>
+					</fieldset>
+				</form>
+			</div>
 		</center>
 	</div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 	<div id="footer"></div>
+
 </body>
 </html>

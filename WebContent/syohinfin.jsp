@@ -13,7 +13,7 @@
 <body>
 	<div id="header">
 		<div class="outline">
-			<font size="7" color="white" height="center">STEPPY</font>
+		&nbsp;STEPPY
 		</div>
 	</div>
 	<center>

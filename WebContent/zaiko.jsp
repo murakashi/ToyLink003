@@ -36,24 +36,21 @@
 </script>
 
 <script>
+	function textControl(obj) {
 
-	function textControl(obj){
-
-		if(obj.checked == true){
+		if (obj.checked == true) {
 
 			//document.getElementById("s_name").value = "";
 			document.getElementById("s_name").disabled = true;
 			document.getElementById("category").disabled = true;
 
-		}
-		else{
+		} else {
 
 			document.getElementById("s_name").disabled = false;
 			document.getElementById("category").disabled = false;
 		}
 
 	}
-
 </script>
 
 <style>
@@ -66,7 +63,7 @@
 <body>
 	<div id="header">
 		<div class="outline">
-			<font size="7" color="white">&nbsp;STEPPY</font>
+			&nbsp;STEPPY
 			<div class="controls">
 				<form action="ZaikoSearch" method="post">
 					<button class="buttonA" name="bname" value="メニュー">メニュー</button>
@@ -75,8 +72,6 @@
 		</div>
 	</div>
 	<div id="wrapper">
-		<br>
-
 		<center>
 			<h1>在庫状況</h1>
 		</center>
@@ -98,13 +93,13 @@
 					<%
 						if (s_name != null) {
 					%>
-					<li><label>商品名&emsp;：</label>
-					<input type="text" class="text" name="syouhin" value="<%=s_name%>" id="s_name"> <br></li>
+					<li><label>商品名&emsp;：</label> <input type="text" class="text"
+						name="syouhin" value="<%=s_name%>" id="s_name"> <br></li>
 					<%
 						} else {
 					%>
-					<li><label>商品名&emsp;：</label>
-					<input type="text" class="text" name="syouhin" id="s_name"> <br></li>
+					<li><label>商品名&emsp;：</label> <input type="text" class="text"
+						name="syouhin" id="s_name"> <br></li>
 					<%
 						}
 					%>
@@ -138,11 +133,12 @@
 							%>
 					</select></li>
 				</ul>
+				<br>
 				<center>
 					<div class="chkbox">
-						<input type="checkbox" id="checkbox01" name="dflg" value="denger" onclick="textControl(this);">
-						安全在庫数が下回っている商品を表示する
-						<label for="checkbox01"></label>
+						<input type="checkbox" id="checkbox01" name="dflg" value="denger"
+							onclick="textControl(this);"> 安全在庫数が下回っている商品を表示する <label
+							for="checkbox01"></label>
 					</div>
 				</center>
 
@@ -162,8 +158,8 @@
 		<center>
 			<table class="t-line" id="border">
 				<tr id="border">
-					<th id="border" width="80">商品ID</th>
-					<th id="border" width="310">商品名</th>
+					<th id="border" width="60">商品ID</th>
+					<th id="border" width="330">商品名</th>
 					<th id="border" width="100">安全在庫数</th>
 					<th id="border" width="80">在庫数</th>
 					<th id="border" width="30">発注</th>
@@ -192,6 +188,7 @@
 				%>
 			</table>
 		</center>
+		<br>
 	</div>
 	<br>
 	<div id="footer"></div>

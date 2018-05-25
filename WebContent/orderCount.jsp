@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="styles.css">
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js">
+
 </script>
 <title>発注数量入力</title>
 
@@ -49,7 +50,7 @@
 <body>
 	<div id="header">
 		<div class="outline">
-			<font size="7" color="white" height="center">STEPPY</font>
+			&nbsp;STEPPY
 			<div class="controls">
 				<form action="Menu" method="Post">
 					<button class="buttonA" type="submit" value="メニュー">メニュー</button>
@@ -66,13 +67,12 @@
 			String siire = (String) session.getAttribute("siire_id");
 			String[] count_arr = (String[]) session.getAttribute("count_arr");
 		%>
-		<br> <br>
+		<br> <br> <br>
 		<center>
-			<p class="example2">仕入先を選択し、発注数を入力してください。</p>
+			<h2>仕入先を選択し、発注数を入力してください。</h2>
 
 			<form action="OrderSum" method="Post">
-
-				仕入先<select name="siire_id" required>
+				<br> <br> 仕入先<select name="siire_id" required>
 					<option value="">未選択</option>
 					<%
 						if (siire == null) {
@@ -95,16 +95,13 @@
 							}
 						}
 					%>
-				</select>
-				<br>
-
-				<br> <span id="prev">前へ</span> <span id="page"></span> <span
-				id="next">次へ</span>
+				</select> <br> <br> <span id="prev">前へ</span> <span id="page"></span>
+				<span id="next">次へ</span>
 
 				<table class="t-line" id="border">
 					<tr id="border">
 						<th id="border" class="color" width="60">商品ID</th>
-						<th id="border" class="color" width="100">商品名</th>
+						<th id="border" class="color" width="320">商品名</th>
 						<th id="border" class="color" width="100">カテゴリ名</th>
 						<th id="border" class="color" width="120">仕入基準単価</th>
 						<th id="border" class="color" width="100">販売単価</th>
@@ -157,12 +154,8 @@
 
 
 				</table>
-
-
-				<p>
+<br>
 					<button class="buttonA" value="発注">発注</button>
-					<br>
-				</p>
 			</form>
 		</center>
 		<div class="controls">
@@ -170,10 +163,8 @@
 				<button class="buttonA">戻る</button>
 			</form>
 		</div>
-
+		<br> <br> <br>
 	</div>
-	<br>
-	<br>
 	<br>
 	<div id="footer"></div>
 </body>

@@ -5,12 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="styles.css">
-<title>Insert title here</title>
+<title>入力完了</title>
 </head>
 <body>
 <div id="header">
 		<div class="outline">
-			<font size="7" color="white">&nbsp;STEPPY</font>
+			&nbsp;STEPPY
 			<div class="controls">
 			<form action="Menu" method="post">
 				<button class="buttonA" type="submit">メニュー</button>
@@ -32,7 +32,7 @@
 </center>
 </div>
 </div>
-<br><br><br><br><br>
+
 <div id = "footer"></div>
 </body>
 </html>

@@ -10,12 +10,11 @@
 <body>
 <div id="header">
 		<div class="outline">
-			<font size="7" color="white" height="center">STEPPY</font>
+			&nbsp;STEPPY
 		</div>
 	</div>
+	<div id="wrapper">
 	<center>
-	<br>
-	<br>
 	<br>
 	<div id="Enclose2">
 	<br>
@@ -32,6 +31,7 @@
 	<br>
 	<br>
 	<br>
+	</div>
 </body>
 <div id="footer"></div>
 </html>

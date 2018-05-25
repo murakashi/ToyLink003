@@ -44,7 +44,7 @@
 <body>
 	<div id="header">
 		<div class="outline">
-			<font size="7" color="white">&nbsp;STEPPY</font>
+			&nbsp;STEPPY
 			<div class="controls">
 			<form action="Menu" method="post">
 				<button class="buttonA" type="submit">メニュー</button>
@@ -53,7 +53,6 @@
 		</div>
 	</div>
 	<div id="wrapper">
-		<br>
 		<center>
 			<h1>売上一覧</h1></center>
 			<br>
@@ -127,9 +126,9 @@ ArrayList<CategoryBean> categorylist = (ArrayList<CategoryBean>)session.getAttri
 
 			<tr id="border">
 				<th id="border" width="150px">日時</th>
-				<th id="border" width="310px">商品名</th>
+				<th id="border" width="330px">商品名</th>
 				<th id="border" width="100px">売上数</th>
-				<th id="border">金額</th>
+				<th id="border" width = "100px">金額</th>
 			</tr>
 
 			<%

@@ -10,6 +10,7 @@
 
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js">
+	
 </script>
 
 <title>発注伝票詳細</title>
@@ -38,12 +39,30 @@
 	});
 </script>
 
+<script>
+	function kakunin() {
+		message = confirm("入庫を行いますか？");
+		if (message == true) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+</script>
+
+<style>
+#prev, #next {
+	color: red;
+	cursor: pointer;
+}
+</style>
+
 </head>
 <body>
 
 	<div id="header">
 		<div class="outline">
-			<font size="7" color="white">&nbsp;STEPPY</font>
+			&nbsp;STEPPY
 			<div class="controls">
 				<form action="Menu" method="post">
 					<button class="buttonA" name="bname" value="メニュー">メニュー</button>
@@ -58,40 +77,24 @@
 		<center>
 			<h1>発注伝票詳細</h1>
 		</center>
-		<br>
+		<ul>
+			<li><label>伝票ID&emsp;：</label><%=order_list.get(0).getO_id()%><br></li>
+			<li><label>仕入先名：</label><%=order_list.get(0).getSiire_name()%><br></li>
+			<li><label>発注日&emsp;：</label><%=order_list.get(0).getO_date()%></li>
+		</ul>
 		<center>
-			<table id="bordernone">
-				<tr>
-					<td><h3>伝票ID</h3></td>
-					<td><h3>：</h3></td>
-					<td><h3><%=order_list.get(0).getO_id()%></h3></td>
-				</tr>
-				<tr>
-					<td><h3><p/>仕入先名</h3></td>
-					<td><h3>：</h3></td>
-					<td><h3><%=order_list.get(0).getSiire_name()%></h3></td>
-				</tr>
-				<tr>
-					<td><h3>発注日</h3></td>
-					<td><h3>：</h3></td>
-					<td><h3><%=order_list.get(0).getO_date()%></h3></td>
-				</tr>
-			</table>
-				<br> <span id="prev">前へ</span> <span id="page"></span> <span
-				id="next">次へ</span>
-		</center>
-		<br>
-		<center>
-			<form action="OrderUpdate" method="post">
+			<br> <span id="prev">前へ</span> <span id="page"></span> <span
+				id="next">次へ</span> <br>
+			<form action="OrderUpdate" method="post" onsubmit="return kakunin()">
 				<table class="t-line" id="border">
 					<tr id="border">
-						<th id="border">商品ID</th>
-						<th id="border">商品名</th>
+						<th id="border" width="60">商品ID</th>
+						<th id="border" width=330">商品名</th>
 						<th id="border">発注数</th>
 					</tr>
 					<%
-						for (OrderBean order : order_list) {
-					%>
+							for (OrderBean order : order_list) {
+						%>
 
 					<tr id="border">
 						<td id="border"><center><%=order.getS_id()%></center></td>
@@ -101,10 +104,10 @@
 							<input type="hidden" name="count" value="<%=order.getO_count()%>"></td>
 					</tr>
 					<%
-						}
-					%>
+							}
+						%>
 				</table>
-				<br> <br> <input type="hidden" name="o_id"
+				<br> <input type="hidden" name="o_id"
 					value="<%=order_list.get(0).getO_id()%>">
 				<button class="buttonA" value="入庫">入庫</button>
 			</form>

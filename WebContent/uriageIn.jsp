@@ -12,7 +12,7 @@
 <body>
 	<div id="header">
 		<div class="outline">
-			<font size="7" color="white">&nbsp;STEPPY</font>
+			&nbsp;STEPPY
 			<div class="controls">
 			<form action="Menu" method="post">
 				<button class="buttonA" type="submit">メニュー</button>
@@ -21,19 +21,19 @@
 		</div>
 	</div>
 	<div id="wrapper">
-		<br>
 		<center>
+		<h1>売上入力</h1>
 			<div id="Enclose">
 				<form action="UriageFin" method="POST">
 					<%
 						ArrayList<SyouhinBean> syouhinlist = (ArrayList<SyouhinBean>) session.getAttribute("syouhinlist");
+						String startdate = (String)session.getAttribute("startdate");
+						String enddate = (String)session.getAttribute("enddate");
 
 						String syouID = (String)session.getAttribute("syouID");
 						String salNum = (String)session.getAttribute("salNum");
 						String tanka = (String)session.getAttribute("tanka");
 					%>
-
-					<h1>売上入力</h1>
 					<br> <br>
 					<table id="bordernone">
 						<tr>
@@ -76,8 +76,8 @@
 							<td>
 								<p /> 売上日
 							</td>
-							<td>&emsp;<input type="date" class="text" name="day"
-								required></td>
+							<td>&emsp;<input type="date" class="text" min="<%= startdate %>"
+							 max="<%= enddate %>" name="day" required></td>
 						</tr>
 						<tr>
 							<td>売上数</td>
@@ -85,13 +85,13 @@
 						if(salNum == null){
 %>
 							<td>&emsp;<input type="number" class="text" name="salNum"
-								min="1" maxlength="7" required>
+								min="1" maxlength="7" required>&nbsp;個
 							</td>
 <%
 						}else{
 %>
 							<td>&emsp;<input type="number" class="text" name="salNum" value="<%= salNum %>"
-									min="1" maxlength="7" required>
+									min="1" maxlength="7" required>&nbsp;個
 							</td>
 <%
 						}
@@ -104,13 +104,13 @@
 						if(tanka == null){
 %>
 							<td>&emsp;<input type="number" class="text" name="tanka"
-								min="1" maxlength="7" required>
+								min="1" maxlength="7" required>&nbsp;円
 							</td>
 <%
 						}else{
 %>
 							<td>&emsp;<input type="number" class="text" name="tanka" value="<%= tanka %>"
-									min="1" maxlength="7" required>
+									min="1" maxlength="7" required>&nbsp;円
 							</td>
 <%
 						}

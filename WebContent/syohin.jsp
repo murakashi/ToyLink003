@@ -47,7 +47,7 @@
 
 	<div id="header">
 		<div class="outline">
-			<font size="7" color="white">&nbsp;STEPPY</font>
+			&nbsp;STEPPY
 			<div class="controls">
 				<form action="Menu" method="post">
 					<button class="buttonA" name="bname" value="メニュー">メニュー</button>
@@ -69,12 +69,13 @@
 			String c_id = (String) session.getAttribute("c_id");
 		%>
 		<center>
-			<p class="example1"><%=session.getAttribute("message")%></p>
+			<font size="5" color="red"><%=session.getAttribute("message")%></font>
 		</center>
-		<div id="Enclose3">
+		<div id="Enclose4">
 			<center>
 				<h3>検索条件</h3>
 			</center>
+			<br>
 			<form action="Syohin" method="post">
 				<ul>
 					<li><label>商品名&emsp;：</label> <%

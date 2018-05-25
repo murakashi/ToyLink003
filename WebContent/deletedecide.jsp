@@ -11,7 +11,7 @@
 
 	<div id="header">
 		<div class="outline">
-			<font size="7" color="white">&nbsp;STEPPY</font>
+			&nbsp;STEPPY
 			<div class="controls">
 				<form action="Menu" method="post">
 					<button class="buttonA" name="bname" value="メニュー">メニュー</button>
@@ -23,7 +23,9 @@
 		<br>
 		<div id="Enclose2">
 			<center>
-				<h2>削除完了しました。</h2>
+				<br>
+				<h2>削除が完了しました</h2>
+				<br>
 				<br>
 				<form action="Syohin" method="post">
 					<button class="buttonA" name="bname" value="戻る">戻る</button>
@@ -31,18 +33,6 @@
 			</center>
 		</div>
 	</div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 	<div id="footer"></div>
 
 </body>

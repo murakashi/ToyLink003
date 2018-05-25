@@ -84,7 +84,7 @@ public class OrderSum extends HttpServlet {
 		/*************************発注内容確認画面で使う***************************/
 		session.setAttribute("siire_name", siire_name);//仕入先名を格納
 
-		session.setAttribute("siire_kin", sum + "");//発注合計金額を格納
+		session.setAttribute("siire_kin", String.format("%1$,3d", sum));//発注合計金額を3ケタにして格納
 
 		/***次の画面（発注内容確認画面）で戻るボタン押されたときの値保持のための準備***/
 		session.setAttribute("count_arr", count_arr);//戻るボタンの時の値保持のため

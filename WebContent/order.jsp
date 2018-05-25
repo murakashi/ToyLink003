@@ -71,7 +71,7 @@
 <body>
 	<div id="header">
 		<div class="outline">
-			<font size="7" color="white" height="center">STEPPY</font>
+			&nbsp;STEPPY
 			<div class="controls">
 				<form action="Menu" method="Post">
 					<button class="buttonA" type="submit" value="メニュー">メニュー</button>
@@ -87,13 +87,11 @@
    String c_id = (String)session.getAttribute("c_id");
 
 %>
-		<br>
 
 		<center>
 			<h1>発注</h1>
 			<div id="Enclose3">
-				<font size="5">検索条件</font>
-				<p>
+				<h3>検索条件</h3>
 				<form action="OrderSearch" method="post">
 					<ul>
 						<li><label>商品名&emsp;：</label><%
@@ -153,7 +151,7 @@
 					<tr>
 						<th id="border" width="20"></th>
 						<th id="border" width="60">商品ID</th>
-						<th id="border" width="160">商品名</th>
+						<th id="border" width="320">商品名</th>
 						<th id="border" width="100">カテゴリ名</th>
 						<th id="border" width="120">仕入基準単価</th>
 						<th id="border" width="100">販売単価</th>

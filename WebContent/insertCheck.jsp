@@ -8,11 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
- <div id="header"><div class = "outline"><font size="7" color="white" height="center">STEPPY</font></div></div>
+ <div id="header"><div class = "outline">&nbsp;STEPPY</div></div>
  <%
 	String c_name = (String)session.getAttribute("c_name");
 %>
 	<center>
+	<br>
+	<br>
+	<br>
 	<br>
 	<br>
 <div id="Enclose">

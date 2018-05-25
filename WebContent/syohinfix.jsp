@@ -3,22 +3,23 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<link rel="stylesheet" type="text/css" href="styles.css">
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="styles.css">
 <title>商品情報の変更</title>
 </head>
 <body>
 	<div id="header">
 		<div class="outline">
-			<font size="7" color="white" height="center">STEPPY</font>
+			&nbsp;STEPPY
 			<div class="controls">
-			<form action="Menu" method="Post">
-				<button class="buttonA" type="submit" value="メニュー">メニュー</button>
-			</form>
-		</div>
+				<form action="Menu" method="Post">
+					<button class="buttonA" type="submit" value="メニュー">メニュー</button>
+				</form>
+			</div>
 		</div>
 	</div>
 	<div id="wrapper">
@@ -38,10 +39,9 @@
 				<br>
 				<h2>商品情報変更</h2>
 				<form action="SyohinFix" method="post">
+				<br>
 					<table style="table-layout: fixed;" id=bordernone>
 						<tr>
-						<br>
-						<br>
 							<td>商品名</td>
 							<td>：</td>
 							<td><input type="text" name="s_name"
@@ -98,6 +98,7 @@
 			</form>
 		</div>
 	</div>
+	<br>
 	<br>
 	<br>
 	<br>

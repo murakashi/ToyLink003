@@ -9,27 +9,27 @@
 </head>
 <%--発注画面でチェックを入れずに発注ボタンを押した時のエラー画面 --%>
 <body>
-	<div id="header"><div class = "outline"><font size="7" color="white" height="center">STEPPY</font></div></div>
-	<br>
-	<br>
-	<br>
-	<center>
-		<div id="Enclose2">
-			<br>
-			<p>
-				<font size="5" color="red" weight="900">商品を選択してください。
-			</p>
-			<form action="Order" method="Post">
+	<div id="header">
+		<div class="outline">&nbsp;STEPPY</div>
+	</div>
+	<div id="wrapper">
+		<br>
+		<center>
+			<div id="Enclose2">
+				<br>
 				<p>
-					<button class="buttonA" value="戻る">戻る</button>
-					<br>
+					<font size="5" color="red" weight="900">商品を選択してください。
 				</p>
-			</form>
+				<form action="Order" method="Post">
+					<p>
+						<button class="buttonA" value="戻る">戻る</button>
+						<br>
+					</p>
+				</form>
+			</div>
+		</center>
+		<br>
 		</div>
-	</center>
-	<br>
-	<br>
-	<br>
-	<div id="footer"></div>
+		<div id="footer"></div>
 </body>
 </html>

@@ -49,7 +49,7 @@ $(function() {
 
 <div id="header">
 		<div class="outline">
-			<font size="7" color="white">&nbsp;STEPPY</font>
+			&nbsp;STEPPY
 			<div class="controls">
 			<form action="Menu" method="post">
 				<button class="buttonA" type="submit">メニュー</button>
@@ -58,7 +58,6 @@ $(function() {
 		</div>
 	</div>
 	<div id="wrapper">
-<br>
 <center>
 <h1>月間売上</h1>
 <br>
@@ -112,7 +111,7 @@ $(function() {
 <br>
 <table id = "border" class = "t-line" width = "700px">
 <tr id = "border">
-<th id = "border">年月</th>
+<th id = "border" width = "150px">年月</th>
 <th id = "border" width= "120px">売上件数</th>
 <th id = "border">売上金額</th>
 <th id = "border">利益</th>
@@ -147,6 +146,7 @@ for(int i=0;i < sel.size();i++){
 </div>
 </div>
 <br>
+<br><br>
 <br>
 <div id = "footer"></div>
 </body>

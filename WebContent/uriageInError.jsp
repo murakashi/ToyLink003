@@ -10,7 +10,7 @@
 <body>
 <div id="header">
 		<div class="outline">
-			<font size="7" color="white">&nbsp;STEPPY</font>
+			&nbsp;STEPPY
 			<div class="controls">
 			<form action="Menu" method="post">
 				<button class="buttonA" type="submit">メニュー</button>
@@ -34,7 +34,6 @@
 	</div>
 </center>
 </div>
-<br><br><br>
 <div id = "footer"></div>
 </body>
 </html>

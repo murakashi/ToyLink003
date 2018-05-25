@@ -8,13 +8,9 @@
 <title>新規商品追加完了</title>
 </head>
 <body>
-	<div id="header">
-		<div class="outline">
-			<font size="7" color="white" height="center">STEPPY</font>
-		</div>
-	</div>
+	<div id="header"><div class = "outline">&nbsp;STEPPY</div></div>
 	<center>
-		<br> <br>
+		<br> <br> <br> <br>
 		<div id="Enclose2">
 			<p class="example2">
 				商品情報を1件追加しました。<br>続けて商品を発注しますか？
@@ -36,7 +32,6 @@
 			</form>
 			<div>
 	</center>
-	<br>
 	<br>
 	<br>
 	<br>

@@ -45,10 +45,16 @@ function nyukin(){
 		if (!isDate(setDate.value,"-")){
 			alert("入金日を入力してください");
 			return false;
+		}else{
+			if(kakunin() == true){
+				dt.value = setDate.value;
+				document.frmMain.submit();
+			}
 		}
+		return false;
 	}
 
-	document.frmMain.submit();
+
 
 }
 
@@ -64,11 +70,34 @@ function isDate (str, delim) {
 	};
 
 </script>
+
+<script>
+
+	function kakunin(){
+
+		message = confirm("入金を行いますか？");
+
+		if ( message == true ){
+			return true;
+	    }else{
+	    	return false;
+	    }
+
+	}
+
+</script>
+
+<style>
+#prev, #next {
+	color: red;
+	cursor: pointer;
+}
+</style>
 </head>
 <body>
 <div id="header">
 		<div class="outline">
-			<font size="7" color="white">&nbsp;STEPPY</font>
+			&nbsp;STEPPY
 			<div class="controls">
 			<form action="Menu" method="post">
 				<button class="buttonA" type="submit">メニュー</button>
@@ -80,13 +109,8 @@ function isDate (str, delim) {
 		<%
 			ArrayList<OrderBean> pay_list = (ArrayList<OrderBean>) session.getAttribute("pay_list");
 		%>
-
-		<br>
-
 		<center>
 			<h1>発注伝票詳細</h1>
-			<br>
-			<br>
 			<table id = "bordernone">
 			<tr><td>
 			<h3>伝票ID&emsp;</h3></td>
@@ -108,7 +132,6 @@ function isDate (str, delim) {
 		<br> <span id="prev">前へ</span> <span id="page"></span> <span
 				id="next">次へ</span>
 		</center>
-		<br>
 		<center>
 			<form action="PayFinish" method="POST" name="frmMain">
 
@@ -141,7 +164,7 @@ function isDate (str, delim) {
 					%>
 				</table>
 				<br>
-				<br> <h3>支払総金額<%=session.getAttribute("sum")%>円</h3>
+				<br> <h2 style = "text-decoration: underline">支払総金額<%=session.getAttribute("sum")%>円</h2>
 <br><br>
 				入金日<input type="date" class="text" name="pay_date" id="pay_date" required>
 				<input type="hidden" name="o_id" value="<%=pay_list.get(0).getO_id()%>">
@@ -154,6 +177,7 @@ function isDate (str, delim) {
 				<button class="buttonA" type="submit">戻る</button>
 			</form>
 		</center>
+		<br>
 	</div>
 	<div id = "footer"></div>
 </body>

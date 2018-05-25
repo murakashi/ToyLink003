@@ -8,11 +8,11 @@
 <title>発注完了</title>
 </head>
 <body>
-    <div id="header"><div class = "outline"><font size="7" color="white" height="center">STEPPY</font></div></div>
+    <div id="header"><div class = "outline">&nbsp;STEPPY</div></div>
+     <div id="wrapper">
 <center>
 <br>
-<br>
-<br>
+
 <div id="Enclose2">
 <br>
 <br>
@@ -26,6 +26,7 @@
 <br>
 <br>
 </center>
+</div>
 <div id="footer"></div>
 </body>
 </html>

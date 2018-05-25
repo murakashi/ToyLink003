@@ -12,7 +12,7 @@
 <body>
 	<div id="header">
 		<div class="outline">
-			<font size="7" color="white" height="center">STEPPY</font>
+		&nbsp;STEPPY
 			<div class="controls">
 				<form action="Menu" method="Post">
 					<button class="buttonA" type="submit" value="メニュー">メニュー</button>
@@ -20,8 +20,9 @@
 			</div>
 		</div>
 	</div>
+	<br>
 	<div id="wrapper">
-		<br>
+		<br> <br> <br>
 		<%
 			int s_id = (int) session.getAttribute("s_id");
 			ArrayList<CategoryBean> category = (ArrayList<CategoryBean>) session.getAttribute("category");

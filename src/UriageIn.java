@@ -1,7 +1,10 @@
 
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.SelectYearBean;
 import bean.SyouhinBean;
 
 /**
@@ -48,8 +52,36 @@ public class UriageIn extends HttpServlet {
 		syouhinlist = db.All_SyohinData();
 		session.setAttribute("syouhinlist", syouhinlist);
 
-		request.getRequestDispatcher("uriageIn.jsp")
-		.forward(request, response);
+		try {
+			SelectYearBean years = new SelectYearBean();
+
+			int startyear = db.getStartYear();
+			if(startyear <= 0) {
+				years.setStartyear(1900);
+			}
+			else {
+				years.setStartyear(startyear);
+			}
+
+			Calendar cal = Calendar.getInstance();
+			int endyear = cal.get(Calendar.YEAR);
+			years.setEndyear(endyear);
+
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+			Date startdate = df.parse(startyear+"-01-01");
+			Date enddate = new Date();
+
+
+			session.setAttribute("startdate", df.format(startdate));
+			session.setAttribute("enddate", df.format(enddate));
+
+			request.getRequestDispatcher("uriageIn.jsp")
+			.forward(request, response);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+
 
 	}
 

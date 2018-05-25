@@ -8,7 +8,8 @@
 <title>発注金額合計確認</title>
 </head>
 <body>
-   <div id="header"><div class = "outline"><font size="7" color="white" height="center">STEPPY</font></div></div>
+  <div id="header"><div class = "outline">&nbsp;STEPPY</div></div>
+	<div id="wrapper">
 <%
 	String siire_name = (String)session.getAttribute("siire_name");
 	String siire_kin = (String)session.getAttribute("siire_kin");
@@ -35,6 +36,7 @@
 </div>
 <br>
 </center>
+</div>
 <div id="footer"></div>
 </body>
 </html>

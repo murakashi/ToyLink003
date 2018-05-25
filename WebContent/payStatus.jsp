@@ -37,7 +37,6 @@ $(function() {
 	draw();
 });
 
-
 function nyukin(oid){
 	var form = document.getElementById("Nyukin");
 	var dt   = document.getElementById("hid_date");
@@ -49,10 +48,16 @@ function nyukin(oid){
 		if (!isDate(setDate.value,"-")){
 			alert("入金日を入力してください");
 			return false;
+		}else{
+			if(kakunin() == true){
+				dt.value = setDate.value;
+				form.submit();
+			}
 		}
 	}
-	dt.value = setDate.value;
-	form.submit();
+
+	//dt.value = setDate.value;
+	//form.submit();
 
 }
 
@@ -68,7 +73,21 @@ function isDate (str, delim) {
 	};
 
 </script>
+<script>
 
+	function kakunin(){
+
+		message = confirm("入金を行いますか？");
+
+		if ( message == true ){
+			return true;
+	    }else{
+	    	return false;
+	    }
+
+	}
+
+</script>
 <style>
 #prev, #next {
 	color: red;
@@ -80,7 +99,7 @@ function isDate (str, delim) {
 <body>
 <div id="header">
 		<div class="outline">
-			<font size="7" color="white">&nbsp;STEPPY</font>
+			&nbsp;STEPPY
 			<div class="controls">
 			<form action="Menu" method="post">
 				<button class="buttonA" type="submit">メニュー</button>
@@ -89,21 +108,17 @@ function isDate (str, delim) {
 		</div>
 	</div>
 	<div id="wrapper">
-		<br>
-
 		<%
 			ArrayList<OrderBean> order_payList = (ArrayList<OrderBean>) session.getAttribute("order_payList");
 		%>
 		<center>
 			<h1>支払状況</h1>
-			<br>
 			<br> <span id="prev">前へ</span> <span id="page"></span> <span id="next">次へ</span>
-			 <br>
-			<table id="border" class = "t-line" width = "800px">
+			<table id="border" class = "t-line" width = "900px">
 				<tr>
 					<th id="border"><center>伝票ID</center></th>
-					<th id="border"><center>支払先名</center></th>
-					<th id="border"><center>支払金額</center></th>
+					<th id="border"width = "250px"><center>支払先名</center></th>
+					<th id="border" width = "120px"><center>支払金額</center></th>
 					<th id="border"><center>入金日</center></th>
 					<th id="border"><center>支払</center></th>
 					<th id="border"><center>詳細</center></th>
@@ -126,7 +141,7 @@ function isDate (str, delim) {
 						<!-- <form action="PayFinish" method="post"> -->
 
 							<center>
-								<button class="buttonA" type="submit"
+								<button class="buttonB" type="submit"
 									onclick ="nyukin(<%=order.getO_id()%>);">支払</button>
 							</center>
 
@@ -136,7 +151,7 @@ function isDate (str, delim) {
 
 							<center>
 								<input type="hidden" name="o_id" value="<%=order.getO_id()%>">
-								<button class="buttonA" type="submit">詳細</button>
+								<button class="buttonB" type="submit">詳細</button>
 								<input type="hidden" name="o_id" value="<%=order.getO_id()%>>">
 							</center>
 						</form>
@@ -159,9 +174,9 @@ function isDate (str, delim) {
 				<button class="buttonA" type="submit">戻る</button>
 			</form>
 		</div>
-		<br>
+		<br><br>
+		<br><br>
 	</div>
-	<br>
 <div id = "footer"></div>
 </body>
 </html>
