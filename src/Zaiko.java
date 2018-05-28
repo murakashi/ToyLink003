@@ -45,7 +45,7 @@ public class Zaiko extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		String bname = request.getParameter("bname");
-		if(bname.equals("在庫状況")) {
+		if(bname.equals("在庫状況") || bname.equals("戻る")) {
 			DBAccess dba = new DBAccess();
 			ArrayList<SyouhinBean> syouhinlist = new ArrayList<SyouhinBean>();
 			syouhinlist = dba.select_AllZaiko();

@@ -26,13 +26,13 @@
 <h2>入力が完了しました。</h2>
 <br>
 <br>
-<form action = "Menu" method = "POST">
+<form action = "UriageIn" method = "POST">
 <button class = "buttonA" type = "submit" value = "戻る">戻る</button>
 </form>
 </center>
 </div>
 </div>
 
-<div id = "footer"></div>
+<div id = "footer">Copyright © 2018 STEPPY All Rights Reserved.</div>
 </body>
 </html>

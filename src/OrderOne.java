@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.SiireBean;
 import bean.SyouhinBean;
 
 /**
@@ -45,9 +46,15 @@ public class OrderOne extends HttpServlet {
 
 		HttpSession session = request.getSession();
 
+		DBAccess db = new DBAccess();
+
 		ArrayList<SyouhinBean> syohin = (ArrayList<SyouhinBean>)session.getAttribute("syohin");
 
-		RequestDispatcher rd = request.getRequestDispatcher("order.jsp");
+		ArrayList<SiireBean> siire_list = db.select_Siire();
+
+		session.setAttribute("siire_list", siire_list);
+
+		RequestDispatcher rd = request.getRequestDispatcher("orderCount.jsp");
 
 		rd.forward(request, response);
 	}

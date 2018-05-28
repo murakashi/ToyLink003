@@ -28,12 +28,12 @@
 	<h2>支払いが完了しました。</h2>
 	<br>
 	<br>
-	<form action="Menu" method="POST">
+	<form action="PayStatus" method="POST">
 		<button class="buttonA" type="submit">戻る</button>
 	</form>
 	</div>
 </center>
 </div>
-<div id = "footer"></div>
+<div id = "footer">Copyright © 2018 STEPPY All Rights Reserved.</div>
 </body>
 </html>

@@ -112,9 +112,9 @@ $(function() {
 <table id = "border" class = "t-line" width = "700px">
 <tr id = "border">
 <th id = "border" width = "150px">年月</th>
-<th id = "border" width= "120px">売上件数</th>
-<th id = "border">売上金額</th>
-<th id = "border">利益</th>
+<th id = "border" width = "120px">売上件数</th>
+<th id = "border" width = "150px">売上金額</th>
+<th id = "border" width = "150px">利益</th>
 </tr>
 
 <%ArrayList<String[]> sel = (ArrayList<String[]>)session.getAttribute("URIAGE");
@@ -124,14 +124,14 @@ for(int i=0;i < sel.size();i++){
 
 <tr id = "border">
 <td id = "border"><center><%= sel.get(i)[0] %></center></td>
-<td id = "border"><div align = "right"><%= sel.get(i)[1] %></div></td>
-<td id = "border"><div align = "right"><%= sel.get(i)[2] %></div></td>
+<td id = "border"><div align = "right"><%=String.format("%1$,3d",Integer.parseInt(sel.get(i)[1])) %></div></td>
+<td id = "border"><div align = "right"><%=String.format("%1$,3d",Integer.parseInt(sel.get(i)[2])) %></div></td>
 <td id = "border">
 <%
 	int num1 = Integer.parseInt(sel.get(i)[2]);
 	int num2 = Integer.parseInt(sel.get(i)[3]);
 %>
-<div align = "right"><%=  num1 - num2  %></div>
+<div align = "right"><%=String.format("%1$,3d",num1 - num2) %></div>
 </td>
 </tr>
 <%} %>
@@ -148,6 +148,6 @@ for(int i=0;i < sel.size();i++){
 <br>
 <br><br>
 <br>
-<div id = "footer"></div>
+<div id = "footer">Copyright © 2018 STEPPY All Rights Reserved.</div>
 </body>
 </html>

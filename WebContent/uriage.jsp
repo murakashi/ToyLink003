@@ -141,8 +141,8 @@ ArrayList<CategoryBean> categorylist = (ArrayList<CategoryBean>)session.getAttri
 			<tr id="border">
 				<td id="border"><center><%=sel.get(i)[0]%></center></td>
 				<td id="border"><%=sel.get(i)[1]%></td>
-				<td id="border"><div align="right"><%=sel.get(i)[2]%></div></td>
-				<td id="border"><div align="right"><%=s*t%></div></td>
+				<td id="border"><div align="right"><%=String.format("%1$,3d",Integer.parseInt(sel.get(i)[2]))%></div></td>
+				<td id="border"><div align="right"><%=String.format("%1$,3d",s*t)%></div></td>
 				<%
 						}
 					%>
@@ -164,6 +164,6 @@ ArrayList<CategoryBean> categorylist = (ArrayList<CategoryBean>)session.getAttri
 		</div>
 	</center>
 	</div>
-	<div id="footer"></div>
+	<div id="footer">Copyright © 2018 STEPPY All Rights Reserved.</div>
 </body>
 </html>

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.SyouhinBean;
+
 /**
  * Servlet implementation class Menu
  */
@@ -35,7 +37,7 @@ public class Menu extends HttpServlet {
 
         DBAccess db = new DBAccess();
 
-        ArrayList<int[]> risk_zaiko = db.getRiskData();
+        ArrayList<SyouhinBean> risk_zaiko = db.getRiskData();
 
         /***********危険在庫になっているものが1つでもあればアラートメッセージを設定する**************/
         if(risk_zaiko.size() > 0) {

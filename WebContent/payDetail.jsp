@@ -111,28 +111,16 @@ function isDate (str, delim) {
 		%>
 		<center>
 			<h1>発注伝票詳細</h1>
-			<table id = "bordernone">
-			<tr><td>
-			<h3>伝票ID&emsp;</h3></td>
-			<td>：&emsp;</td>
-			<td><h3><%=pay_list.get(0).getO_id()%></h3></td>
-			</tr>
-			<tr>
-			<td><h3><p>仕入先名&emsp;</p></h3></td>
-			<td>：&emsp;</td>
-				<td><h3><%=pay_list.get(0).getSiire_name()%></h3></td>
-			</tr>
-
-			<tr>
-			<td><h3>発注日&emsp;</h3></td>
-			<td>：&emsp;</td>
-			<td><h3><%=pay_list.get(0).getO_date()%></h3></td>
-			</tr>
-		</table>
+			</center>
+			<ul>
+			<li><label><h3>伝票ID&emsp;：</h3></label><h3><%=pay_list.get(0).getO_id()%></h3></li>
+			<li><label><h3>仕入先名：</h3></label><h3><%=pay_list.get(0).getSiire_name()%></h3></li>
+			<li><label><h3>発注日&emsp;：</h3></label><h3><%=pay_list.get(0).getO_date()%></h3></li>
+		</ul>
+<center>
 		<br> <span id="prev">前へ</span> <span id="page"></span> <span
 				id="next">次へ</span>
-		</center>
-		<center>
+
 			<form action="PayFinish" method="POST" name="frmMain">
 
 				<table id="border" class = "t-line" width="800px">
@@ -151,11 +139,11 @@ function isDate (str, delim) {
 						<td id="border"><center><%=order.getS_id()%></center></td>
 						<td id="border"><%=order.getS_name()%><input type="hidden"
 							name="s_id" value="<%=order.getS_id()%>"></td>
-						<td id="border"><div align = "right"><%=order.getO_count()%></div><input type="hidden"
-							name="count" value="<%=order.getO_count()%>"></td>
-						<td id="border"><div align = "right"><%=order.getBaseprice()%></div>
-						<input type="hidden" name="price" value="<%=order.getBaseprice()%>"></td>
-						<td id="border"><div align = "right"><%=order.getKingaku()%></div><input type="hidden"
+						<td id="border"><div align = "right"><%=String.format("%1$,3d",order.getO_count())%></div>
+						<input type="hidden" name="count" value="<%=order.getO_count()%>"></td>
+						<td id="border"><div align = "right"><%=String.format("%1$,3d",order.getBaseprice())%></div>
+						<input type="hidden" name="price" value="<%=String.format("%1$,3d",order.getBaseprice())%>"></td>
+						<td id="border"><div align = "right"><%=String.format("%1$,3d",order.getKingaku())%></div><input type="hidden"
 							name="kingaku" value="<%=order.getKingaku()%>"></td>
 					</tr>
 
@@ -164,7 +152,7 @@ function isDate (str, delim) {
 					%>
 				</table>
 				<br>
-				<br> <h2 style = "text-decoration: underline">支払総金額<%=session.getAttribute("sum")%>円</h2>
+				<br> <h2 style = "text-decoration: underline">支払総金額<%=String.format("%1$,3d",session.getAttribute("sum"))%>円</h2>
 <br><br>
 				入金日<input type="date" class="text" name="pay_date" id="pay_date" required>
 				<input type="hidden" name="o_id" value="<%=pay_list.get(0).getO_id()%>">
@@ -179,6 +167,6 @@ function isDate (str, delim) {
 		</center>
 		<br>
 	</div>
-	<div id = "footer"></div>
+	<div id = "footer">Copyright © 2018 STEPPY All Rights Reserved.</div>
 </body>
 </html>

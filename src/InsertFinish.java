@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.SiireBean;
 import bean.SyouhinBean;
 
 /**
@@ -55,9 +56,14 @@ public class InsertFinish extends HttpServlet {
 
 		db.insert_Syohin(s_id,s_name,c_id,siire_tanka,h_tanka,safe_zaiko);
 
-		/**************続けて発注する際に使う********************************/
+		db.insert_Zaiko(s_id,"0");//続けて発注の有無にかかわらず在庫に在庫数0でインサートする
+
+		/**************続けて発注する際に使う（発注数量入力画面で使いたい）********************************/
 		ArrayList<SyouhinBean> syohin = db.select_Single_Syohin(s_id);
 		session.setAttribute("syohin", syohin);
+
+		ArrayList<SiireBean> siire_list = db.select_Siire();
+		session.setAttribute("siire_list", siire_list);
 		/**************続けて発注する際に使う********************************/
 
 		session.removeAttribute("s_name");

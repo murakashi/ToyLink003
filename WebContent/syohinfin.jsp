@@ -24,35 +24,38 @@
 
 			String c_name = (String) session.getAttribute("c_name");
 		%>
-		<font size="5">≪以下の内容に変更してよろしいですか？≫</font> <br>
+		<h2>≪以下の内容に変更してよろしいですか？≫</h2> <br>
 		<fieldset>
-			<div id="Enclose2">
-				<font size="5">変更前</font>
+			<div id="Enclose">
+			<br>
+				<h3>変更前</h3>
+				<br>
+				<br>
 				<table style="table-layout: fixed;" id=bordernone>
 					<tr>
-						<td>商品名</td>
+						<td width="120">商品名</td>
 						<td>：</td>
 						<td><%=before.get(0).getS_name()%></td>
 					</tr>
 					<tr>
-						<td>カテゴリ名</td>
+						<td width="150">カテゴリ名</td>
 						<td>：</td>
 						<td><%=before.get(0).getC_id()%></td>
 					</tr>
 					<tr>
-						<td>仕入基準価格</td>
+						<td width="120">仕入基準価格</td>
 						<td>：</td>
-						<td><%=before.get(0).getBaseprice()%></td>
+						<td><%=String.format("%1$,3d",before.get(0).getBaseprice())%></td>
 					</tr>
 					<tr>
-						<td>販売価格</td>
+						<td width="120">販売価格</td>
 						<td>：</td>
-						<td><%=before.get(0).getHtanka()%></td>
+						<td><%=String.format("%1$,3d",before.get(0).getHtanka())%></td>
 					</tr>
 					<tr>
-						<td>安全在庫数</td>
+						<td width="120">安全在庫数</td>
 						<td>：</td>
-						<td><%=before.get(0).getSafezaiko()%></td>
+						<td><%=String.format("%1$,3d",before.get(0).getSafezaiko())%></td>
 					</tr>
 				</table>
 			</div>
@@ -61,33 +64,36 @@
 			<h1>☞</h1><br>
 		</fieldset>
 		<fieldset>
-			<div id="Enclose2">
-				<font size="5">変更後</font>
+			<div id="Enclose">
+			<br>
+				<h3>変更後</h3>
+				<br>
+				<br>
 				<table style="table-layout: fixed;" id=bordernone>
 					<tr>
-						<td>商品名</td>
+						<td width="120">商品名</td>
 						<td>：</td>
 						<td><%=syohin.getS_name()%></td>
 					</tr>
 					<tr>
-						<td>カテゴリ名</td>
+						<td width="150">カテゴリ名</td>
 						<td>：</td>
 						<td><%=c_name%></td>
 					</tr>
 					<tr>
-						<td>仕入基準価格</td>
+						<td width="120">仕入基準価格</td>
 						<td>：</td>
-						<td><%=syohin.getBaseprice()%></td>
+						<td><%=String.format("%1$,3d",syohin.getBaseprice())%></td>
 					</tr>
 					<tr>
-						<td>販売価格</td>
+						<td width="120">販売価格</td>
 						<td>：</td>
-						<td><%=syohin.getHtanka()%></td>
+						<td><%=String.format("%1$,3d",syohin.getHtanka())%></td>
 					</tr>
 					<tr>
-						<td>安全在庫数</td>
+						<td width="120">安全在庫数</td>
 						<td>：</td>
-						<td><%=syohin.getSafezaiko()%></td>
+						<td><%=String.format("%1$,3d",syohin.getSafezaiko())%></td>
 					</tr>
 				</table>
 			</div>
@@ -106,5 +112,5 @@
 	</center>
 </body>
 <br>
-<div id="footer"></div>
+<div id="footer">Copyright © 2018 STEPPY All Rights Reserved.</div>
 </html>

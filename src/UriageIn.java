@@ -45,6 +45,10 @@ public class UriageIn extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 
+		/****s売上入力完了から戻ってきたときsession切る******/
+		session.removeAttribute("syouID");
+		session.removeAttribute("salNum");
+		session.removeAttribute("tanka");
 
 		DBAccess db=new DBAccess();
 

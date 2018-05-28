@@ -114,7 +114,9 @@ public class ZaikoSearch extends HttpServlet {
 		else if (orderbtn != null) {
 			String orderid = (String)request.getParameter("order");
 
+			//ArrayList<SyouhinBean> searchresult = dba.select_Single_Syohin(orderid);
 			ArrayList<SyouhinBean> searchresult = dba.select_Single_Syohin(orderid);
+
 			session.setAttribute("syohin", searchresult);
 
 			ArrayList<CategoryBean> category = dba.select_Category();

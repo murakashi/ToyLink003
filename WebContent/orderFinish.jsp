@@ -15,8 +15,7 @@
 
 <div id="Enclose2">
 <br>
-<br>
-<h2>発注が完了しました。</h2>
+<h3>発注が完了しました。</h3>
 <form action="Order" method="Post">
 <p><button class="buttonA" value="戻る">戻る</button><br></p>
 </form>
@@ -27,6 +26,6 @@
 <br>
 </center>
 </div>
-<div id="footer"></div>
+<div id="footer">Copyright © 2018 STEPPY All Rights Reserved.</div>
 </body>
 </html>

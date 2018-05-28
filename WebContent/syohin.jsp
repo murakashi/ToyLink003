@@ -56,7 +56,6 @@
 		</div>
 	</div>
 	<div id="wrapper">
-		<br>
 		<center>
 			<h1>商品一覧</h1>
 		</center>
@@ -75,7 +74,6 @@
 			<center>
 				<h3>検索条件</h3>
 			</center>
-			<br>
 			<form action="Syohin" method="post">
 				<ul>
 					<li><label>商品名&emsp;：</label> <%
@@ -130,16 +128,16 @@
 		<center>
 			<table id="border" class="t-line">
 				<tr id="border">
-					<th id="border" width="80">商品ID</th>
-					<th id="border" width="330">商品名</th>
-					<th id="border" width="140">カテゴリ名</th>
-					<th id="border" width="90">仕入基準<br>単価
+					<th id="border" width=60px>商品<br>ID</th>
+					<th id="border" width=330px>商品名</th>
+					<th id="border" width=150px>カテゴリ名</th>
+					<th id="border" width=100px>仕入基準<br>単価
 					</th>
-					<th id="border" width="90">販売単価</th>
-					<th id="border" width="90">安全<br>在庫数
+					<th id="border" width=90px>販売<br>単価</th>
+					<th id="border" width=90px>安全<br>在庫数
 					</th>
-					<th id="border" width="30">変更</th>
-					<th id="border" width="30">削除</th>
+					<th id="border" width=115px>変更</th>
+					<th id="border" width=115px>削除</th>
 				</tr>
 
 				<%
@@ -147,18 +145,18 @@
 					for (int i = 0; i < syouhinlist.size(); i++) {
 				%>
 				<tr id="border">
-					<td id="border"><center><%=syouhinlist.get(i).getS_id()%></center></td>
-					<td id="border"><%=syouhinlist.get(i).getS_name()%></td>
-					<td id="border"><%=syouhinlist.get(i).getC_id()%></td>
-					<td id="border"><div align="right"><%=syouhinlist.get(i).getBaseprice()%></div></td>
-					<td id="border"><div align="right"><%=syouhinlist.get(i).getHtanka()%></div></td>
-					<td id="border"><div align="right"><%=syouhinlist.get(i).getSafezaiko()%></div></td>
-					<td id="border"><form action="Syohin" method="post">
-							<button class="buttonA" name="updatebtn"
+					<td id="border" width=60px><center><%=syouhinlist.get(i).getS_id()%></center></td>
+					<td id="border" width=330px><%=syouhinlist.get(i).getS_name()%></td>
+					<td id="border" width=130px><%=syouhinlist.get(i).getC_id()%></td>
+					<td id="border" width=90px><div align="right"><%=String.format("%1$,3d",syouhinlist.get(i).getBaseprice())%></div></td>
+					<td id="border" width=90px><div align="right"><%=String.format("%1$,3d",syouhinlist.get(i).getHtanka())%></div></td>
+					<td id="border" width=90px><div align="right"><%=String.format("%1$,3d",syouhinlist.get(i).getSafezaiko())%></div></td>
+					<td id="border" width=115px><form action="Syohin" method="post">
+							<button class="buttonB" name="updatebtn"
 								value="<%=syouhinlist.get(i).getS_id()%>">変更</button>
 						</form></td>
-					<td id="border"><form action="SyohinDel" method="post">
-							<button class="buttonA" name="deletebtn"
+					<td id="border" width=115px><form action="SyohinDel" method="post">
+							<button class="buttonB" name="deletebtn"
 								value="<%=syouhinlist.get(i).getS_id()%>">削除</button>
 						</form></td>
 				</tr>
@@ -169,7 +167,7 @@
 		</center>
 	</div>
 	<br>
-	<div id="footer"></div>
+	<div id="footer">Copyright ©2018 STEPPY All Rights Reserved.</div>
 
 </body>
 </html>

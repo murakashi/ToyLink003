@@ -136,6 +136,6 @@
 	<br>
 	<br>
 	<br>
-	<div id="footer"></div>
+	<div id="footer">Copyright © 2018 STEPPY All Rights Reserved.</div>
 </body>
 </html>

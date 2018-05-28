@@ -78,30 +78,30 @@
 			<h1>発注状況</h1>
 			<br> <span id="prev">前へ</span> <span id="page"></span> <span
 				id="next">次へ</span>
-			<table class="t-line" id="border">
+			<table class="t-line" id="border" width=700>
 				<tr id="border">
-					<th id="border" width=60><center>伝票ID</center></th>
-					<th id="border" width=140><center>仕入先名</center></th>
-					<th id="border" width=100><center>発注日</center></th>
-					<th id="border">入庫</th>
-					<th id="border">詳細</th>
+					<th id="border" width=60><center>伝票<br>ID</center></th>
+					<th id="border" width=220><center>仕入先名</center></th>
+					<th id="border" width=150><center>発注日</center></th>
+					<th id="border" width=115>入庫</th>
+					<th id="border" width=115>詳細</th>
 				</tr>
 				<%
 					for (OrderBean order : order_list) {
 				%>
 				<tr id="border">
 					<td id="border"><center><%=order.getO_id()%></center></td>
-					<td id="border"><%=order.getSiire_name()%></td>
+					<td id="border"><center><%=order.getSiire_name()%></center></td>
 					<td id="border"><center><%=order.getO_date()%></center></td>
 					<td id="border"><form action="OrderUpdate" method="post" onsubmit="return kakunin()">
 							<center>
-								<button class="buttonA" value="入庫">入庫</button>
+								<button class="buttonB" value="入庫">入庫</button>
 								<input type="hidden" name="o_id" value="<%=order.getO_id()%>">
 							</center>
 						</form></td>
 					<td id="border"><form action="OrderDetail" method="post">
 							<center>
-								<button class="buttonA" value="詳細">詳細</button>
+								<button class="buttonB" value="詳細">詳細</button>
 								<input type="hidden" name="o_id" value="<%=order.getO_id()%>">
 							</center>
 						</form></td>
@@ -113,7 +113,7 @@
 		</center>
 	</div>
 	<br>
-	<div id="footer"></div>
+	<div id="footer">Copyright ©2018 STEPPY All Rights Reserved.</div>
 
 </body>
 </html>

@@ -28,7 +28,7 @@
 	<div id="wrapper">
 		<center>
 			<h1>棚卸入力</h1>
-			<div id="Enclose2" style="margin-top:0px;">
+			<div id="Enclose3" style="margin-top: 0px;">
 				<form action="TanaorosiFin" method="POST">
 
 					<table id="bordernone">
@@ -49,7 +49,7 @@
 						<tr>
 							<td>数量</td>
 							<td>&emsp;<input type="number" class="text"
-								name="tana_count" min="0" required>
+								name="tana_count" min="0" maxlength="5" required>
 							</td>
 						</tr>
 					</table>
@@ -58,9 +58,9 @@
 				</form>
 			</div>
 		</center>
-
+		<br>
 	</div>
-	<div id="footer"></div>
+	<div id="footer">Copyright ©2018 STEPPY All Rights Reserved.</div>
 
 </body>
 </html>

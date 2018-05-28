@@ -10,7 +10,7 @@
 
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js">
-	
+
 </script>
 
 <title>発注伝票詳細</title>
@@ -86,11 +86,11 @@
 			<br> <span id="prev">前へ</span> <span id="page"></span> <span
 				id="next">次へ</span> <br>
 			<form action="OrderUpdate" method="post" onsubmit="return kakunin()">
-				<table class="t-line" id="border">
+				<table class="t-line" id="border" width=500>
 					<tr id="border">
-						<th id="border" width="60">商品ID</th>
-						<th id="border" width=330">商品名</th>
-						<th id="border">発注数</th>
+						<th id="border" width=60>商品ID</th>
+						<th id="border" width=330>商品名</th>
+						<th id="border" width=115>発注数</th>
 					</tr>
 					<%
 							for (OrderBean order : order_list) {
@@ -100,7 +100,7 @@
 						<td id="border"><center><%=order.getS_id()%></center></td>
 						<td id="border"><%=order.getS_name()%><input type="hidden"
 							name="s_id" value="<%=order.getS_id()%>"></td>
-						<td id="border"><div align="right"><%=order.getO_count()%></div>
+						<td id="border"><div align="right"><%=String.format("%1$,3d",order.getO_count())%></div>
 							<input type="hidden" name="count" value="<%=order.getO_count()%>"></td>
 					</tr>
 					<%
@@ -118,6 +118,6 @@
 		</center>
 	</div>
 	<br>
-	<div id="footer"></div>
+	<div id="footer">Copyright ©2018 STEPPY All Rights Reserved.</div>
 </body>
 </html>

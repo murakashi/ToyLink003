@@ -17,17 +17,13 @@
 			</p>
 			<form action="OrderOne" method="post">
 				<fieldset>
-					<p>
 						<button class="buttonA">はい</button>
-					</p>
 				</fieldset>
 			</form>
 
 			<form action="Menu" method="post">
 				<fieldset>
-					<p>
 						<button class="buttonA">いいえ</button>
-					</p>
 				</fieldset>
 			</form>
 			<div>
@@ -36,6 +32,6 @@
 	<br>
 	<br>
 	<br>
-	<div id="footer"></div>
+	<div id="footer">Copyright © 2018 STEPPY All Rights Reserved.</div>
 </body>
 </html>

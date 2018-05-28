@@ -138,7 +138,6 @@
 					</ul>
 					<br> 安全在庫数が下回っている商品を表示する <input type="checkbox" name="dflg"
 						value="denger" onclick="textControl(this);">
-					<p>
 						<button class="buttonB" value="検索">検索</button>
 						<br>
 					</p>
@@ -147,15 +146,16 @@
 			<br> <span id="prev">前へ</span> <span id="page"></span> <span id="next">次へ</span>
 			<form action="OrderCount" method="Post">
 
-				<table class="t-line" id="border">
+				<table class="t-line" id="border" width="1000px">
 					<tr>
 						<th id="border" width="20"></th>
 						<th id="border" width="60">商品ID</th>
 						<th id="border" width="320">商品名</th>
-						<th id="border" width="100">カテゴリ名</th>
-						<th id="border" width="120">仕入基準単価</th>
+						<th id="border" width="150">カテゴリ名</th>
+						<th id="border" width="150">仕入基準単価</th>
 						<th id="border" width="100">販売単価</th>
-						<th id="border" width="100">安全在庫数</th>
+						<th id="border" width="130">安全在庫数</th>
+						<th id="border" width="100">在庫数</th>
 					</tr>
 
 					<%
@@ -167,9 +167,10 @@
 						<td align="center"><%=syohinBean.getS_id()%></td>
 						<td id="border"><%=syohinBean.getS_name()%></td>
 						<td id="border"><%=syohinBean.getC_id()%></td>
-						<td id="border" align="right"><%=syohinBean.getBaseprice()%></td>
-						<td id="border" align="right"><%=syohinBean.getHtanka()%></td>
-						<td id="border" align="right"><%=syohinBean.getSafezaiko()%></td>
+						<td id="border" align="right"><%=String.format("%1$,3d",syohinBean.getBaseprice())%></td>
+						<td id="border" align="right"><%=String.format("%1$,3d",syohinBean.getHtanka())%></td>
+						<td id="border" align="right"><%=String.format("%1$,3d",syohinBean.getSafezaiko())%></td>
+						<td id="border" align="right"><%=String.format("%1$,3d",syohinBean.getZaiko())%></td>
 					</tr>
 					<%
 						}
@@ -184,5 +185,5 @@
 		</center>
 	</div>
 </body>
-<div id="footer"></div>
+<div id="footer">Copyright © 2018 STEPPY All Rights Reserved.</div>
 </html>

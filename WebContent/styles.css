@@ -7,7 +7,7 @@
 html, body {
 	color:#111111;
 	font-family: "Noto Sans JP", "游ゴシック Medium", "游ゴシック";
-	font-size: large;
+	font-size: x-large;
 	font-weight:700;
 	margin: 0;
 	height: 88%;
@@ -53,7 +53,7 @@ h3 {
 
 #wrapper {
 	width: 100%; /* 幅をウィンドウサイズに合わせて100％に指定 */
-	max-width: 1100px; /* 追加：幅は最大で800pxまで広がるようにする */
+	max-width: 1200px; /* 追加：幅は最大で800pxまで広がるようにする */
 	min-width: 300px; /* 追加：幅は最小で300pxまで狭まるようにする */
 	min-height: 100%;
 	margin: 0 auto;
@@ -81,6 +81,8 @@ form, fieldset {
 	border: 1px #555555 solid;
 	border-collapse: collapse;
 	height: 55px;
+	table-layout: fixed;
+
 }
 
 /*テーブルの行ごとに色を変える*/
@@ -341,12 +343,12 @@ select {
 }
 
 /*検索3*/
-/*在庫、*/
+/*在庫、発注*/
 #Enclose3 {
 	margin: 0 auto;
 	/*margin-top: 70px;*/
 	padding: 20px;
-	width: 470px;
+	width: 500px;
 	height: 250px;
 	border: 10px double #000066;
 	    margin: 2em 0;
@@ -395,6 +397,6 @@ ul label {
 }
 
 ul {
-	width: 280px;
+	width: 410px;
 	margin: 0 auto;
 }

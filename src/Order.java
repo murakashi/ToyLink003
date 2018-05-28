@@ -55,7 +55,6 @@ public class Order extends HttpServlet {
 
 		session.removeAttribute("count_arr");
 
-
 		DBAccess db = new DBAccess();
 
 		//String s_id = (String)session.getAttribute("s_id");/**新規追加からの発注の流れのためのもの*/

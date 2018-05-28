@@ -23,29 +23,25 @@
 		</div>
 	</div>
 	<div id="wrapper">
-		<br>
 		<%
 			ArrayList<SyouhinBean> syohinlist = (ArrayList<SyouhinBean>) session.getAttribute("syohindata");
 			ArrayList<CategoryBean> categorylist = (ArrayList<CategoryBean>) session.getAttribute("categorylist");
 			String c_id = (String) session.getAttribute("c_id");
 		%>
-
-
-
 		<center>
+		<br>
+			<h1>商品情報変更</h1>
 			<div id="Enclose">
-
 				<br>
-				<br>
-				<h2>商品情報変更</h2>
 				<form action="SyohinFix" method="post">
-				<br>
+					<br>
 					<table style="table-layout: fixed;" id=bordernone>
 						<tr>
 							<td>商品名</td>
 							<td>：</td>
 							<td><input type="text" name="s_name"
-								value="<%=syohinlist.get(0).getS_name()%>" required></td>
+								value="<%=syohinlist.get(0).getS_name()%>" maxlength="33"
+								required></td>
 						</tr>
 
 						<tr>
@@ -70,26 +66,28 @@
 							<td>仕入基準単価</td>
 							<td>：</td>
 							<td><input type="number" name="baseprice" size="6"
-								value="<%=syohinlist.get(0).getBaseprice()%>" maxlength="6" min="1" required>円</td>
+								value="<%=syohinlist.get(0).getBaseprice()%>" maxlength="6"
+								min="1" required>円</td>
 						</tr>
 						<tr>
 							<td>販売単価</td>
 							<td>：</td>
-							<td><input type="number" name="htanka"  size="6"
-								value="<%=syohinlist.get(0).getHtanka()%>" maxlength="6" min="1" required>円</td>
+							<td><input type="number" name="htanka" size="6"
+								value="<%=syohinlist.get(0).getHtanka()%>" maxlength="6" min="1"
+								required>円</td>
 						</tr>
 						<tr>
 							<td>安全在庫数</td>
 							<td>：</td>
-							<td><input type="number" name="safezaiko"  size="6"
-								value="<%=syohinlist.get(0).getSafezaiko()%>" maxlength="3" min="1" required>個</td>
+							<td><input type="number" name="safezaiko" size="6"
+								value="<%=syohinlist.get(0).getSafezaiko()%>" maxlength="3"
+								min="1" required>個</td>
 						</tr>
 					</table>
-
 					<p>
 						<button class="buttonA" type="submit" name="bname" value="変更">変更</button>
 					</p>
-					</form>
+				</form>
 			</div>
 		</center>
 		<div class="controls">
@@ -102,6 +100,6 @@
 	<br>
 	<br>
 	<br>
-	<div id="footer"></div>
+	<div id="footer">Copyright © 2018 STEPPY All Rights Reserved.</div>
 </body>
 </html>

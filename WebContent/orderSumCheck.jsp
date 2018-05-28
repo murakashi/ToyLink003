@@ -19,8 +19,6 @@
 <p>
 <div id="Enclose">
 <br>
-<br>
-<br>
 <h2>発注内容確認</h2>
 <p class="example2">以下の内容でよろしいですか？</p>
 
@@ -28,15 +26,15 @@
 合計金額：<%= siire_kin %>円<br>
 
 <form action="OrderFinish" method="Post">
-<fieldset><p><button class="buttonA" value="はい">はい</button><br></p></fieldset>
+<fieldset><p><button class="buttonA" value="はい">確定</button><br></p></fieldset>
 </form>
 <form action="OrderError" method="Post">
-<fieldset><p><button class="buttonA" value="いいえ">いいえ</button><br></p></fieldset>
+<fieldset><p><button class="buttonA" value="いいえ">戻る</button><br></p></fieldset>
 </form>
 </div>
 <br>
 </center>
 </div>
-<div id="footer"></div>
+<div id="footer">Copyright © 2018 STEPPY All Rights Reserved.</div>
 </body>
 </html>

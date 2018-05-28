@@ -37,7 +37,7 @@
 
 <tr>
 <td><form action="Uriage" method="post">
-<input href="#" class="square_btn" type="submit" value="売上">
+<input href="#" class="square_btn" type="submit" value="売上一覧">
 </form>
 </td>
 <td><form action="UriageIn" method="post">
@@ -57,6 +57,6 @@
 </center>
 <br>
 </div>
-<div id="footer"></div>
+<div id="footer">Copyright © 2018 STEPPY All Rights Reserved.</div>
 </body>
 </html>

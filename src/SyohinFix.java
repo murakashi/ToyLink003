@@ -68,7 +68,7 @@ public class SyohinFix extends HttpServlet {
 					syohin.setS_id(syohindata.get(0).getS_id());
 
 					String s_name = (String)request.getParameter("s_name");
-					if(s_name.getBytes("UTF-8").length <= 50) {
+					//if(s_name.getBytes("UTF-8").length <= 50) {
 						syohin.setS_name(s_name);
 
 						/********カテゴリID受け取ってカテゴリ名にする*************/
@@ -90,7 +90,7 @@ public class SyohinFix extends HttpServlet {
 
 						session.setAttribute("updatesyohin", syohin);
 						request.getRequestDispatcher("syohinfin.jsp").forward(request, response);
-					}
+					//}
 				}
 				else if(bname.equals("戻る")) {
 					request.getRequestDispatcher("Syohin").forward(request, response);

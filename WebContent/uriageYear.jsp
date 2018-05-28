@@ -118,8 +118,8 @@ $(function() {
 <tr id = "border">
 <th id = "border" width = "150px">年</th>
 <th id = "border" width = "120px">売上件数</th>
-<th id = "border">売上金額</th>
-<th id = "border">利益</th>
+<th id = "border" width = "150px">売上金額</th>
+<th id = "border" width = "150px">利益</th>
 </tr>
 
 <% ArrayList<String[]> sel = (ArrayList<String[]>)session.getAttribute("URIAGEY");
@@ -129,9 +129,9 @@ for(int i=0;i < sel.size();i++){
 
 <tr id = "border">
 <td id = "border"><center><%= sel.get(i)[0] %></center></td>
-<td id = "border"><div align = "right"><%= sel.get(i)[1] %></div></td>
-<td id = "border"><div align = "right"><%= sel.get(i)[2] %></div></td>
-<td id = "border"><div align = "right"><%= t-n %></div></td>
+<td id = "border"><div align = "right"><%=String.format("%1$,3d",Integer.parseInt(sel.get(i)[1])) %></div></td>
+<td id = "border"><div align = "right"><%=String.format("%1$,3d",Integer.parseInt(sel.get(i)[2])) %></div></td>
+<td id = "border"><div align = "right"><%=String.format("%1$,3d",t-n) %></div></td>
 <%} %>
 </tr>
 
@@ -148,6 +148,6 @@ for(int i=0;i < sel.size();i++){
 <br>
 <br>
 </div>
-<div id = "footer"></div>
+<div id = "footer">Copyright © 2018 STEPPY All Rights Reserved.</div>
 </body>
 </html>

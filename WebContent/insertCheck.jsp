@@ -15,58 +15,53 @@
 	<center>
 	<br>
 	<br>
+
 	<br>
 	<br>
+	<h3>以下の商品を追加しますか？</h3>
 	<br>
 <div id="Enclose">
-<br>
-		<p class="example2">以下の商品を追加しますか？</p>
-
 		<table id=bordernone>
+		<br>
 			<tr>
-				<td>商品ID</td>
+				<td width="120">商品ID</td>
 				<td>：</td>
 				<td><%=session.getAttribute("s_id")%></td>
 			</tr>
 			<tr>
-				<td>商品名</td>
+				<td width="120">商品名</td>
 				<td>：</td>
 				<td><%=session.getAttribute("s_name")%></td>
 			</tr>
 			<tr>
-				<td>カテゴリ</td>
+				<td width="120">カテゴリ</td>
 				<td>：</td>
 				<td><%= c_name %></td>
 			</tr>
 			<tr>
-				<td>仕入基準単価</td>
+				<td width="150">仕入基準単価</td>
 				<td>：</td>
-				<td><%=session.getAttribute("siire_tanka")%></td>
+				<td><%=String.format("%1$,3d",Integer.parseInt((String)session.getAttribute("siire_tanka")))%></td>
 		    </tr>
 		    <tr>
-				<td>販売単価</td>
+				<td width="120">販売単価</td>
 				<td>：</td>
-				<td><%=session.getAttribute("h_tanka")%></td>
+				<td><%=String.format("%1$,3d",Integer.parseInt((String)session.getAttribute("h_tanka")))%></td>
 			</tr>
             <tr>
-				<td>安全在庫数</td>
+				<td width="150">安全在庫数</td>
 				<td>：</td>
-				<td><%=session.getAttribute("safe_zaiko")%></td>
+				<td><%=String.format("%1$,3d",Integer.parseInt((String)session.getAttribute("safe_zaiko")))%></td>
 			</tr>
 		</table>
 		<form action="InsertFinish" method="post">
 			<fieldset>
-				<p>
 					<button class="buttonA">はい</button>
-				</p>
 			</fieldset>
 		</form>
-
 		<form action="NewSyohin" method="post">
 			<fieldset>
-				<p>
 					<button class="buttonA">いいえ</button>
-				</p>
 			</fieldset>
 			<br>
 			<br>
@@ -75,6 +70,6 @@
 		<br>
 		<br>
 	</center>
-	<div id="footer"></div>
+	<div id="footer">Copyright © 2018 STEPPY All Rights Reserved.</div>
 </body>
 </html>

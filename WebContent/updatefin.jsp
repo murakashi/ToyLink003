@@ -18,8 +18,7 @@
 	<br>
 	<div id="Enclose2">
 	<br>
-	<br>
-	<h2>変更が完了しました。</h2>
+	<h3>変更が完了しました。</h3>
 	<br>
 	<br>
 	<form action="Syohin" method="post">
@@ -33,5 +32,5 @@
 	<br>
 	</div>
 </body>
-<div id="footer"></div>
+<div id="footer">Copyright © 2018 STEPPY All Rights Reserved.</div>
 </html>

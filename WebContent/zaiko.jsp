@@ -141,12 +141,10 @@
 							for="checkbox01"></label>
 					</div>
 				</center>
-
-				<p />
 				<center>
 					<button class="buttonB" name="bname" value="検索">検索</button>
 				</center>
-				<p />
+				<br>
 			</form>
 		</div>
 
@@ -156,14 +154,14 @@
 		</center>
 
 		<center>
-			<table class="t-line" id="border">
+			<table class="t-line" id="border" width="800">
 				<tr id="border">
-					<th id="border" width="60">商品ID</th>
+					<th id="border" width="60">商品<br>ID</th>
 					<th id="border" width="330">商品名</th>
-					<th id="border" width="100">安全在庫数</th>
-					<th id="border" width="80">在庫数</th>
-					<th id="border" width="30">発注</th>
-					<th id="border" width="30">棚卸</th>
+					<th id="border" width="100">安全<br>在庫数</th>
+					<th id="border" width="100">実在庫数</th>
+					<th id="border" width="115">発注</th>
+					<th id="border" width="115">棚卸</th>
 				</tr>
 				<%
 					int id = 0;
@@ -172,14 +170,14 @@
 				<tr id="border">
 					<td id="border"><center><%=syohinlist.get(i).getS_id()%></center></td>
 					<td id="border"><%=syohinlist.get(i).getS_name()%></td>
-					<td id="border"><div align="right"><%=syohinlist.get(i).getSafezaiko()%></div></td>
-					<td id="border"><div align="right"><%=syohinlist.get(i).getZaiko()%></div></td>
+					<td id="border"><div align="right"><%=String.format("%1$,3d",syohinlist.get(i).getSafezaiko())%></div></td>
+					<td id="border"><div align="right"><%=String.format("%1$,3d",syohinlist.get(i).getZaiko())%></div></td>
 					<td id="border"><form action="ZaikoSearch" method="post">
-							<button class="buttonA" name="order"
+							<button class="buttonB" name="order"
 								value="<%=syohinlist.get(i).getS_id()%>">発注</button>
 						</form></td>
 					<td id="border"><form action="Tanaorosi" method="post">
-							<button class="buttonA" name="tana"
+							<button class="buttonB" name="tana"
 								value="<%=syohinlist.get(i).getS_id()%>">棚卸</button>
 						</form></td>
 				</tr>
@@ -191,7 +189,7 @@
 		<br>
 	</div>
 	<br>
-	<div id="footer"></div>
+	<div id="footer">Copyright ©2018 STEPPY All Rights Reserved.</div>
 
 </body>
 </html>

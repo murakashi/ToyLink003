@@ -61,7 +61,8 @@ public class OrderSearch extends HttpServlet {
 		DBAccess db = new DBAccess();
 
 		if(dflg != null) {
-			syohin = db.select_SyohinA();
+			//syohin = db.select_SyohinA();
+			syohin = db.getRiskData();
 		}else {
 			syohin = db.select_SyohinB(s_name,c_id);
 		}

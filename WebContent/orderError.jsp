@@ -18,7 +18,7 @@
 			<div id="Enclose2">
 				<br>
 				<p>
-					<font size="5" color="red" weight="900">商品を選択してください。
+					<font color="red">商品を選択してください。</font>
 				</p>
 				<form action="Order" method="Post">
 					<p>
@@ -30,6 +30,6 @@
 		</center>
 		<br>
 		</div>
-		<div id="footer"></div>
+		<div id="footer">Copyright © 2018 STEPPY All Rights Reserved.</div>
 </body>
 </html>

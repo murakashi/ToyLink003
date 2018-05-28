@@ -98,23 +98,24 @@ public class Syohin extends HttpServlet {
 
 							ArrayList<SyouhinBean> searchresult = dba.SyohinList_Name_Category_Search(syouhin,category);
 							session.setAttribute("syouhinlist", searchresult);
-							session.setAttribute("error", "");
+							session.setAttribute("message", "");
 						}
 						else {
 							ArrayList<SyouhinBean> searchresult = dba.SyohinList_NameSearch(syouhin);
 							session.setAttribute("syouhinlist", searchresult);
-							session.setAttribute("error", "");
+							session.setAttribute("message", "");
 						}
 					}
 					else {
-						session.setAttribute("error", "検索条件が長すぎます");
+						//session.setAttribute("error", "検索条件が長すぎます");
+						session.setAttribute("message", "検索条件が長すぎます");
 					}
 
 				}
 				else if (!(category.equals("未選択"))) {
 					ArrayList<SyouhinBean> searchresult = dba.SyohinList_CategorySearch(category);
 					session.setAttribute("syouhinlist", searchresult);
-					session.setAttribute("error", "");
+					session.setAttribute("message", "");
 				}
 				else {
 					syouhinlist = dba.All_SyohinData();

@@ -26,7 +26,7 @@
 		%>
 		<br>
 		<center>
-			<div id="Enclose2">
+			<div id="Enclose3">
 				<h3>以下の内容の商品を削除します</h3>
 				<table id="bordernone">
 					<tr>
@@ -57,7 +57,7 @@
 			</div>
 		</center>
 	</div>
-	<div id="footer"></div>
+	<div id="footer">Copyright ©2018 STEPPY All Rights Reserved.</div>
 
 </body>
 </html>

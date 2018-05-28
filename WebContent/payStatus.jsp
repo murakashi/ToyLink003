@@ -116,12 +116,12 @@ function isDate (str, delim) {
 			<br> <span id="prev">前へ</span> <span id="page"></span> <span id="next">次へ</span>
 			<table id="border" class = "t-line" width = "900px">
 				<tr>
-					<th id="border"><center>伝票ID</center></th>
+					<th id="border" width = "80px"><center>伝票ID</center></th>
 					<th id="border"width = "250px"><center>支払先名</center></th>
 					<th id="border" width = "120px"><center>支払金額</center></th>
-					<th id="border"><center>入金日</center></th>
-					<th id="border"><center>支払</center></th>
-					<th id="border"><center>詳細</center></th>
+					<th id="border" width = "160px"><center>入金日</center></th>
+					<th id="border" width = "110px"><center>支払</center></th>
+					<th id="border" width = "110px"><center>詳細</center></th>
 				</tr>
 				<%
 					for (OrderBean order : order_payList) {
@@ -129,7 +129,7 @@ function isDate (str, delim) {
 				<tr height=40>
 					<td id="border"><center><%=order.getO_id()%></center></td>
 					<td id="border"><center><%=order.getSiire_name()%></center></td>
-					<td id="border"><div align="right"><%=order.getKingaku()%></div></td>
+					<td id="border"><div align="right"><%=String.format("%1$,3d",order.getKingaku())%></div></td>
 					<td id="border">
 						<center>
 							<input type="date" class="text" width="400px" name="pay_date_tmp"
@@ -177,6 +177,6 @@ function isDate (str, delim) {
 		<br><br>
 		<br><br>
 	</div>
-<div id = "footer"></div>
+<div id = "footer">Copyright © 2018 STEPPY All Rights Reserved.</div>
 </body>
 </html>

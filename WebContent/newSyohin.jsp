@@ -22,7 +22,7 @@
 	</div>
 	<br>
 	<div id="wrapper">
-		<br> <br> <br>
+		<br>
 		<%
 			int s_id = (int) session.getAttribute("s_id");
 			ArrayList<CategoryBean> category = (ArrayList<CategoryBean>) session.getAttribute("category");
@@ -34,10 +34,9 @@
 			String safe_zaiko = (String) session.getAttribute("safe_zaiko");
 		%>
 		<center>
+			<h1>新規商品追加</h1>
 			<div id="Enclose">
-				<br>
-				<h2>新規商品追加</h2>
-				</p>
+<br>
 				<form action="InsertCheck" method="Post">
 					<table style="table-layout: fixed;" id=bordernone>
 						<tr>
@@ -52,12 +51,12 @@
 							<%
 								if (s_name == null) {
 							%>
-							<td><input type="text" name="s_name" size="20" required></td>
+							<td><input type="text" name="s_name" size="20" maxlength="33"  required></td>
 							<%
 								} else {
 							%>
 							<td><input type="text" name="s_name" size="20"
-								value="<%=s_name%>" required></td>
+								value="<%=s_name%>"  maxlength="48" required></td>
 							<%
 								}
 							%>
@@ -159,6 +158,6 @@
 		</div>
 		<br> <br> <br> <br>
 	</div>
-	<div id="footer"></div>
+	<div id="footer">Copyright © 2018 STEPPY All Rights Reserved.</div>
 </body>
 </html>
