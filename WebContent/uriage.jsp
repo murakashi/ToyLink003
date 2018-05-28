@@ -60,7 +60,6 @@
 			<div id ="Enclose4">
 
 		<center><h3>検索条件</h3></center>
-		<br>
 		<form action="UriageSearch" method="post">
 
 			<%
@@ -71,7 +70,7 @@ ArrayList<CategoryBean> categorylist = (ArrayList<CategoryBean>)session.getAttri
 
 %>
 			<ul>
-				<li><label>商品名&emsp;：</label> <%
+				<li class = "center"><label>商品名&emsp;：</label> <%
 	   if(s_name == null || s_name.equals("")){
 %> <input type="text" class="text" name="syouhinName"> <%
 	   }else{
@@ -79,7 +78,7 @@ ArrayList<CategoryBean> categorylist = (ArrayList<CategoryBean>)session.getAttri
 					value="<%= s_name %>"> <%
 	   }
 %></li>
-				<li><label>カテゴリ：</label> <select name="category">
+				<li class = "center"><label>カテゴリ：</label> <select name="category">
 						<%
 	if(category == null || category.equals("未選択")){
 %>
@@ -110,7 +109,6 @@ ArrayList<CategoryBean> categorylist = (ArrayList<CategoryBean>)session.getAttri
 %>
 				</select></li>
 			</ul>
-			<br>
 			<center>
 		<button class="buttonB" type="submit" name="bname">検索</button>
 	</center>
@@ -127,8 +125,8 @@ ArrayList<CategoryBean> categorylist = (ArrayList<CategoryBean>)session.getAttri
 			<tr id="border">
 				<th id="border" width="150px">日時</th>
 				<th id="border" width="330px">商品名</th>
-				<th id="border" width="100px">売上数</th>
-				<th id="border" width = "100px">金額</th>
+				<th id="border" width="120px">売上数</th>
+				<th id="border" width = "120px">金額</th>
 			</tr>
 
 			<%

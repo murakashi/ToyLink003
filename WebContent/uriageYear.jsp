@@ -67,7 +67,7 @@ $(function() {
 
 <div id = "Enclose5">
 <center><h3>検索条件</h3>
-<br><br>
+<br>
 <form action="UriageYearSearch" method="post">
 <ul>
 <li><label>年&nbsp;:&nbsp;</label>

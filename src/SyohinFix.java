@@ -44,7 +44,7 @@ public class SyohinFix extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		DBAccess dba = new DBAccess();
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(false);
 		ArrayList<SyouhinBean> syohindata = (ArrayList<SyouhinBean>)session.getAttribute("syohindata");
 		String bname = request.getParameter("bname");
 		if (syohindata != null) {
@@ -62,11 +62,18 @@ public class SyohinFix extends HttpServlet {
 			else {
 
 				if(bname.equals("変更")) {
-					String category = (String)request.getParameter("category");
+
+					/***変更前の商品のデータ取得（Syohin.javaから）***/
+
+
+					//カテゴリ取得
+//					String category = (String)request.getParameter("category");
+
 					SyouhinBean syohin = new SyouhinBean();
 
 					syohin.setS_id(syohindata.get(0).getS_id());
 
+					//商品名取得
 					String s_name = (String)request.getParameter("s_name");
 					//if(s_name.getBytes("UTF-8").length <= 50) {
 						syohin.setS_name(s_name);
@@ -79,9 +86,11 @@ public class SyohinFix extends HttpServlet {
 						session.setAttribute("c_id", c_id);
 						session.setAttribute("c_name", c_name);
 
+						//仕入基準単価取得
 						String baseprice = (String)request.getParameter("baseprice");
 						syohin.setBaseprice(Integer.parseInt(baseprice));
 
+						//
 						String htanka = (String)request.getParameter("htanka");
 						syohin.setHtanka(Integer.parseInt(htanka));
 
@@ -89,10 +98,34 @@ public class SyohinFix extends HttpServlet {
 						syohin.setSafezaiko(Integer.parseInt(safezaiko));
 
 						session.setAttribute("updatesyohin", syohin);
+						ArrayList<String> change = new ArrayList<String>();
+
+
+						if(!(syohindata.get(0).getS_name().equals(syohin.getS_name()))) {
+							change.add("1");
+						}
+
+						if(!(syohindata.get(0).getC_id().equals(c_name))) {
+							change.add("2");
+						}
+
+						if(!(syohindata.get(0).getBaseprice() ==syohin.getBaseprice())) {
+							change.add("3");
+						}
+
+						if(!(syohindata.get(0).getHtanka() ==syohin.getHtanka())) {
+							change.add("4");
+						}
+
+						if(!(syohindata.get(0).getSafezaiko() ==syohin.getSafezaiko())) {
+							change.add("5");
+						}
+						session.setAttribute("change", change);
 						request.getRequestDispatcher("syohinfin.jsp").forward(request, response);
 					//}
 				}
 				else if(bname.equals("戻る")) {
+					session.removeAttribute("c_id");
 					request.getRequestDispatcher("Syohin").forward(request, response);
 				}
 				else if (bname.equals("はい")) {
@@ -103,6 +136,8 @@ public class SyohinFix extends HttpServlet {
 
 				}
 				else if (bname.equals("いいえ")) {
+					String c_id = dba.select_CategoryID(syohindata.get(0).getC_id());
+					session.setAttribute("c_id", c_id);
 					request.getRequestDispatcher("syohinfix.jsp").forward(request, response);
 				}
 			}

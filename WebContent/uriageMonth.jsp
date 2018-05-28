@@ -64,7 +64,7 @@ $(function() {
 
 <div id = "Enclose5">
 <h3 >検索条件</h3>
-<br><br>
+
 <form action="UriageMonth" method="post">
 <ul>
 <li><label>年&nbsp;:&nbsp;</label>

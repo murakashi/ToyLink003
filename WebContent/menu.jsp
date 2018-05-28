@@ -12,7 +12,7 @@
 <div id="header"><div class = "outline">&nbsp;STEPPY</div></div>
 <div id="wrapper">
 <br>
-<br>
+
 <center>
 <p><font size="5" color="red"><%=session.getAttribute("zaiko00")%></font></p>
 <table>

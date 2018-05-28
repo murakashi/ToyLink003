@@ -118,10 +118,10 @@ function isDate (str, delim) {
 				<tr>
 					<th id="border" width = "80px"><center>伝票ID</center></th>
 					<th id="border"width = "250px"><center>支払先名</center></th>
-					<th id="border" width = "120px"><center>支払金額</center></th>
+					<th id="border" width = "140px"><center>支払金額</center></th>
 					<th id="border" width = "160px"><center>入金日</center></th>
-					<th id="border" width = "110px"><center>支払</center></th>
-					<th id="border" width = "110px"><center>詳細</center></th>
+					<th id="border" width = "115px"><center>支払</center></th>
+					<th id="border" width = "115px"><center>詳細</center></th>
 				</tr>
 				<%
 					for (OrderBean order : order_payList) {

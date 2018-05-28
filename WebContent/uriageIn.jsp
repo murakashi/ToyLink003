@@ -34,8 +34,8 @@
 						String salNum = (String)session.getAttribute("salNum");
 						String tanka = (String)session.getAttribute("tanka");
 					%>
-					<br> <br>
 					<table id="bordernone">
+<br>
 						<tr>
 							<td>商品名</td>
 							<td>&emsp;<select name="syouID" required>
@@ -125,7 +125,6 @@
 							</td>
 						</tr>
 					</table>
-					<br>
 					<button class="buttonA" type="submit">完了</button>
 
 				</form>

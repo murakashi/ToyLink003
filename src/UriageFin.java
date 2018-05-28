@@ -78,7 +78,7 @@ public class UriageFin extends HttpServlet {
 		/*****税込価格を求める*****/
 		int tax=db.getTax();
 		int taxOnly=tanka*tax/100;
-		int taxIn=tanka+taxOnly;
+		int taxIn=(tanka+taxOnly)*salNum;
 
 
 		//売上テーブルにインサートする

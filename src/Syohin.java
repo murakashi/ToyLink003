@@ -79,6 +79,10 @@ public class Syohin extends HttpServlet {
 				session.setAttribute("syouhinlist", syouhinlist);
 				session.setAttribute("categorylist", categorylist);
 
+				if(session.getAttribute("c_id") != null) {
+					session.removeAttribute("c_id");
+				}
+
 				request.getRequestDispatcher("syohin.jsp").forward(request, response);;
 			}
 			else if(bname.equals("検索")) {

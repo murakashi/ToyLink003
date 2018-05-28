@@ -94,23 +94,13 @@ public class DBAccess {
 	}
 
 	/******************商品マスタから全件セレクトする（発注に送る）**************************/
-	public ArrayList<SyouhinBean> select_AllSyohin() {
+	/*public ArrayList<SyouhinBean> select_AllSyohin() {
 
-		sql = "select 商品マスタ.商品ID,商品名,カテゴリ名,仕入基準単価,販売単価,安全在庫数,sum(isnull(a.在庫数合計,0) + isnull(b.発注数合計,0)) as 在庫数合計\r\n" +
-				"from 商品マスタ inner join カテゴリマスタ\r\n" +
-				"on 商品マスタ.カテゴリID = カテゴリマスタ.カテゴリID\r\n" +
-				"left join\r\n" +
-				"(select 商品ID,sum(在庫数) as 在庫数合計\r\n" +
-				"from 在庫\r\n" +
-				"group by 商品ID) as a\r\n" +
-				"on 商品マスタ.商品ID = a.商品ID\r\n" +
-				"left join \r\n" +
-				"(select 商品ID,sum(発注数) as 発注数合計\r\n" +
-				"from 発注\r\n" +
-				"where 入庫フラグ = '0'\r\n" +
-				"group by 商品ID) as b\r\n" +
-				"on 商品マスタ.商品ID = b.商品ID\r\n" +
-				"group by 商品マスタ.商品ID,商品名,カテゴリ名,仕入基準単価,販売単価,安全在庫数";
+		sql = "select 商品ID,商品名,カテゴリ名,仕入基準単価,販売単価,安全在庫数 " +
+				"from 商品マスタ inner join カテゴリマスタ " +
+				"on 商品マスタ.カテゴリID = カテゴリマスタ.カテゴリID " +
+				"where 削除フラグ = '0' " +
+				"order by 商品ID";
 
 		//selectした結果を格納する用
 		ArrayList<SyouhinBean> syohin_list = new ArrayList<SyouhinBean>();
@@ -128,7 +118,6 @@ public class DBAccess {
 				syohin.setBaseprice(rs.getInt("仕入基準単価"));
 				syohin.setHtanka(rs.getInt("販売単価"));
 				syohin.setSafezaiko(rs.getInt("安全在庫数"));
-				syohin.setZaiko(rs.getInt("在庫数合計"));
 				syohin_list.add(syohin);//配列をArrayListに詰める
 			}
 			rs.close();
@@ -138,7 +127,7 @@ public class DBAccess {
 			System.err.println(objEx.getClass().getName() + ":" + objEx.getMessage());
 		}
 		return syohin_list;
-	}
+	}*/
 
 	/****************商品IDの最大値+1を取得する******************************/
 	public int autoShohinId(){
@@ -164,53 +153,6 @@ public class DBAccess {
 				 System.err.println(objEx.getClass().getName()+":"+objEx);
 			}
 			return -1;
-	}
-
-	/******************商品IDを指定して商品をセレクト（発注数量入力に送る）**************************/
-	public SyouhinBean select_Syohin(String s_id) {
-
-		sql = "select 商品マスタ.商品ID,商品名,カテゴリ名,仕入基準単価,販売単価,安全在庫数,sum(isnull(a.在庫数合計,0) + isnull(b.発注数合計,0)) as 在庫数合計\r\n" +
-				"from 商品マスタ inner join カテゴリマスタ\r\n" +
-				"on 商品マスタ.カテゴリID = カテゴリマスタ.カテゴリID\r\n" +
-				"left join\r\n" +
-				"(select 商品ID,sum(在庫数) as 在庫数合計\r\n" +
-				"from 在庫\r\n" +
-				"group by 商品ID) as a\r\n" +
-				"on 商品マスタ.商品ID = a.商品ID\r\n" +
-				"left join \r\n" +
-				"(select 商品ID,sum(発注数) as 発注数合計\r\n" +
-				"from 発注\r\n" +
-				"where 入庫フラグ = '0'\r\n" +
-				"group by 商品ID) as b\r\n" +
-				"on 商品マスタ.商品ID = b.商品ID\r\n" +
-				"where 商品マスタ.商品ID = "+  s_id + " "+
-				"group by 商品マスタ.商品ID,商品名,カテゴリ名,仕入基準単価,販売単価,安全在庫数";
-
-
-		//selectした結果を格納する用
-		SyouhinBean syohin = new SyouhinBean();
-
-		try {
-			Statement stmt = objCon.createStatement();
-
-			ResultSet rs = stmt.executeQuery(sql);
-
-			while (rs.next()) {
-				syohin.setS_id(rs.getInt("商品ID"));
-				syohin.setS_name(rs.getString("商品名"));
-				syohin.setC_id(rs.getString("カテゴリ名"));
-				syohin.setBaseprice(rs.getInt("仕入基準単価"));
-				syohin.setHtanka(rs.getInt("販売単価"));
-				syohin.setSafezaiko(rs.getInt("安全在庫数"));
-				syohin.setZaiko(rs.getInt("在庫数合計"));
-			}
-			rs.close();
-			stmt.close();
-		} catch (Exception objEx) {
-			//コンソールに「接続エラー内容」を表示
-			System.err.println(objEx.getClass().getName() + ":" + objEx.getMessage());
-		}
-		return syohin;
 	}
 
 	/******************カテゴリマスタから全件セレクトする（発注に送る）**************************/
@@ -293,6 +235,7 @@ public class DBAccess {
 		}
 		return siire_list;
 	}
+
 
 	/******************在庫から安全在庫数を下回っている商品をセレクトする（発注検索結果で使う）**************************/
 	public ArrayList<SyouhinBean> select_SyohinA() {
@@ -1218,55 +1161,6 @@ public class DBAccess {
 		return result;
 	}
 
-	/******************商品マスタから検索条件を指定してセレクトする**************************/
-	public ArrayList<SyouhinBean> select_Single_Syohin(String s_id) {
-
-		sql = "select 商品マスタ.商品ID,商品名,カテゴリ名,仕入基準単価,販売単価,安全在庫数,sum(isnull(a.在庫数合計,0) + isnull(b.発注数合計,0)) as 在庫数合計\r\n" +
-				"from 商品マスタ inner join カテゴリマスタ\r\n" +
-				"on 商品マスタ.カテゴリID = カテゴリマスタ.カテゴリID\r\n" +
-				"left join\r\n" +
-				"(select 商品ID,sum(在庫数) as 在庫数合計\r\n" +
-				"from 在庫\r\n" +
-				"group by 商品ID) as a\r\n" +
-				"on 商品マスタ.商品ID = a.商品ID\r\n" +
-				"left join \r\n" +
-				"(select 商品ID,sum(発注数) as 発注数合計\r\n" +
-				"from 発注\r\n" +
-				"where 入庫フラグ = '0'\r\n" +
-				"group by 商品ID) as b\r\n" +
-				"on 商品マスタ.商品ID = b.商品ID\r\n" +
-				"where 商品マスタ.商品ID = " + s_id + " " +
-				"group by 商品マスタ.商品ID,商品名,カテゴリ名,仕入基準単価,販売単価,安全在庫数";
-
-		//selectした結果を格納する用
-		ArrayList<SyouhinBean>  syohin = new ArrayList<SyouhinBean>();
-
-		try {
-			Statement stmt = objCon.createStatement();
-
-			ResultSet rs = stmt.executeQuery(sql);
-
-			while (rs.next()) {
-				SyouhinBean sb = new SyouhinBean();
-				sb.setS_id(rs.getInt("商品ID"));
-				sb.setS_name(rs.getString("商品名"));
-				sb.setC_id(rs.getString("カテゴリ名"));
-				sb.setBaseprice(rs.getInt("仕入基準単価"));
-				sb.setHtanka(rs.getInt("販売単価"));
-				sb.setSafezaiko(rs.getInt("安全在庫数"));
-				sb.setZaiko(rs.getInt("在庫数合計"));
-				syohin.add(sb);
-				break;
-			}
-			rs.close();
-			stmt.close();
-		} catch (Exception objEx) {
-			//コンソールに「接続エラー内容」を表示
-			System.err.println(objEx.getClass().getName() + ":" + objEx.getMessage());
-		}
-		return syohin;
-	}
-
 	public ArrayList<SyouhinBean> select_Multi_Syohin(String s_name) {
 
 		sql = "select 在庫.商品ID,商品名,カテゴリ名,仕入基準単価,販売単価,安全在庫数,sum(在庫数) as 在庫残量 " +
@@ -1814,4 +1708,148 @@ public class DBAccess {
 		}
 		return c_id;
 	}
+	/******************商品マスタから検索条件を指定してセレクトする**************************/
+	public ArrayList<SyouhinBean> select_Single_Syohin(String s_id) {
+
+		sql = "select 商品マスタ.商品ID,商品名,カテゴリ名,仕入基準単価,販売単価,安全在庫数,sum(isnull(a.在庫数合計,0) + isnull(b.発注数合計,0)) as 在庫数合計\r\n" +
+				"from 商品マスタ inner join カテゴリマスタ\r\n" +
+				"on 商品マスタ.カテゴリID = カテゴリマスタ.カテゴリID\r\n" +
+				"left join\r\n" +
+				"(select 商品ID,sum(在庫数) as 在庫数合計\r\n" +
+				"from 在庫\r\n" +
+				"group by 商品ID) as a\r\n" +
+				"on 商品マスタ.商品ID = a.商品ID\r\n" +
+				"left join \r\n" +
+				"(select 商品ID,sum(発注数) as 発注数合計\r\n" +
+				"from 発注\r\n" +
+				"where 入庫フラグ = '0'\r\n" +
+				"group by 商品ID) as b\r\n" +
+				"on 商品マスタ.商品ID = b.商品ID\r\n" +
+				"where 商品マスタ.商品ID = " + s_id + " " +
+				"group by 商品マスタ.商品ID,商品名,カテゴリ名,仕入基準単価,販売単価,安全在庫数";
+
+		//selectした結果を格納する用
+		ArrayList<SyouhinBean>  syohin = new ArrayList<SyouhinBean>();
+
+		try {
+			Statement stmt = objCon.createStatement();
+
+			ResultSet rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				SyouhinBean sb = new SyouhinBean();
+				sb.setS_id(rs.getInt("商品ID"));
+				sb.setS_name(rs.getString("商品名"));
+				sb.setC_id(rs.getString("カテゴリ名"));
+				sb.setBaseprice(rs.getInt("仕入基準単価"));
+				sb.setHtanka(rs.getInt("販売単価"));
+				sb.setSafezaiko(rs.getInt("安全在庫数"));
+				sb.setZaiko(rs.getInt("在庫数合計"));
+				syohin.add(sb);
+				break;
+			}
+			rs.close();
+			stmt.close();
+		} catch (Exception objEx) {
+			//コンソールに「接続エラー内容」を表示
+			System.err.println(objEx.getClass().getName() + ":" + objEx.getMessage());
+		}
+		return syohin;
+	}
+
+
+/******************商品マスタから全件セレクトする（発注に送る）**************************/
+	public ArrayList<SyouhinBean> select_AllSyohin() {
+
+		sql = "select 商品マスタ.商品ID,商品名,カテゴリ名,仕入基準単価,販売単価,安全在庫数,sum(isnull(a.在庫数合計,0) + isnull(b.発注数合計,0)) as 在庫数合計\r\n" +
+				"from 商品マスタ inner join カテゴリマスタ\r\n" +
+				"on 商品マスタ.カテゴリID = カテゴリマスタ.カテゴリID\r\n" +
+				"left join\r\n" +
+				"(select 商品ID,sum(在庫数) as 在庫数合計\r\n" +
+				"from 在庫\r\n" +
+				"group by 商品ID) as a\r\n" +
+				"on 商品マスタ.商品ID = a.商品ID\r\n" +
+				"left join \r\n" +
+				"(select 商品ID,sum(発注数) as 発注数合計\r\n" +
+				"from 発注\r\n" +
+				"where 入庫フラグ = '0'\r\n" +
+				"group by 商品ID) as b\r\n" +
+				"on 商品マスタ.商品ID = b.商品ID\r\n" +
+				"group by 商品マスタ.商品ID,商品名,カテゴリ名,仕入基準単価,販売単価,安全在庫数";
+
+		//selectした結果を格納する用
+		ArrayList<SyouhinBean> syohin_list = new ArrayList<SyouhinBean>();
+
+		try {
+			Statement stmt = objCon.createStatement();
+
+			ResultSet rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				SyouhinBean syohin = new SyouhinBean();
+				syohin.setS_id(rs.getInt("商品ID"));
+				syohin.setS_name(rs.getString("商品名"));
+				syohin.setC_id(rs.getString("カテゴリ名"));
+				syohin.setBaseprice(rs.getInt("仕入基準単価"));
+				syohin.setHtanka(rs.getInt("販売単価"));
+				syohin.setSafezaiko(rs.getInt("安全在庫数"));
+				syohin.setZaiko(rs.getInt("在庫数合計"));
+				syohin_list.add(syohin);//配列をArrayListに詰める
+			}
+			rs.close();
+			stmt.close();
+		} catch (Exception objEx) {
+			//コンソールに「接続エラー内容」を表示
+			System.err.println(objEx.getClass().getName() + ":" + objEx.getMessage());
+		}
+		return syohin_list;
+	}
+
+/******************商品IDを指定して商品をセレクト（発注数量入力に送る）**************************/
+	public SyouhinBean select_Syohin(String s_id) {
+
+		sql = "select 商品マスタ.商品ID,商品名,カテゴリ名,仕入基準単価,販売単価,安全在庫数,sum(isnull(a.在庫数合計,0) + isnull(b.発注数合計,0)) as 在庫数合計\r\n" +
+				"from 商品マスタ inner join カテゴリマスタ\r\n" +
+				"on 商品マスタ.カテゴリID = カテゴリマスタ.カテゴリID\r\n" +
+				"left join\r\n" +
+				"(select 商品ID,sum(在庫数) as 在庫数合計\r\n" +
+				"from 在庫\r\n" +
+				"group by 商品ID) as a\r\n" +
+				"on 商品マスタ.商品ID = a.商品ID\r\n" +
+				"left join \r\n" +
+				"(select 商品ID,sum(発注数) as 発注数合計\r\n" +
+				"from 発注\r\n" +
+				"where 入庫フラグ = '0'\r\n" +
+				"group by 商品ID) as b\r\n" +
+				"on 商品マスタ.商品ID = b.商品ID\r\n" +
+				"where 商品マスタ.商品ID = "+  s_id + " "+
+				"group by 商品マスタ.商品ID,商品名,カテゴリ名,仕入基準単価,販売単価,安全在庫数";
+
+
+		//selectした結果を格納する用
+		SyouhinBean syohin = new SyouhinBean();
+
+		try {
+			Statement stmt = objCon.createStatement();
+
+			ResultSet rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				syohin.setS_id(rs.getInt("商品ID"));
+				syohin.setS_name(rs.getString("商品名"));
+				syohin.setC_id(rs.getString("カテゴリ名"));
+				syohin.setBaseprice(rs.getInt("仕入基準単価"));
+				syohin.setHtanka(rs.getInt("販売単価"));
+				syohin.setSafezaiko(rs.getInt("安全在庫数"));
+				syohin.setZaiko(rs.getInt("在庫数合計"));
+			}
+			rs.close();
+			stmt.close();
+		} catch (Exception objEx) {
+			//コンソールに「接続エラー内容」を表示
+			System.err.println(objEx.getClass().getName() + ":" + objEx.getMessage());
+		}
+		return syohin;
+	}
+
 }

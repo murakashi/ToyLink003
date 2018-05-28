@@ -21,9 +21,10 @@
 
 <div id = "wrapper">
 <center>
-
 <br>
-	<div id = "Enclose2">
+<br>
+<br>
+	<div id = "Enclose3">
 	<br>
 	<h2>実在庫数がマイナスになってしまいます</h2>
 	<br>

@@ -89,7 +89,7 @@
 				<h3>検索条件</h3>
 			</center>
 			<form action="ZaikoSearch" method="post">
-				<ul>
+				<ul class="center">
 					<%
 						if (s_name != null) {
 					%>
