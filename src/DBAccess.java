@@ -286,41 +286,21 @@ public class DBAccess {
 	/******************在庫から商品名、カテゴリ名を指定して商品をセレクトする（発注検索結果で使う）**************************/
 	public ArrayList<SyouhinBean> select_SyohinB(String s_name,String c_id) {
 
-		/*sql = "select 商品マスタ.商品ID,商品名,カテゴリ名,仕入基準単価,販売単価,安全在庫数,COALESCE(sum(在庫数),0) as 在庫数\r\n" +
+		sql = "select 商品マスタ.商品ID,商品名,カテゴリ名,仕入基準単価,販売単価,安全在庫数,sum(isnull(a.在庫数合計,0) + isnull(b.発注数合計,0)) as 在庫数合計\r\n" +
 				"from 商品マスタ inner join カテゴリマスタ\r\n" +
 				"on 商品マスタ.カテゴリID = カテゴリマスタ.カテゴリID\r\n" +
-				"left outer join 在庫\r\n" +
-				"on 商品マスタ.商品ID = 在庫.商品ID\r\n" +
-				"where 1=1 ";
-				/*+ "商品名 like '%の%'\r\n" +
-				"and 商品マスタ.カテゴリID = '01'\r\n" +
-				"group by 商品マスタ.商品ID,商品名,カテゴリ名,仕入基準単価,販売単価,安全在庫数\r\n" +
-				"order by 商品マスタ.商品ID";*/
-
-		/*String sql ="select 商品マスタ.商品ID,安全在庫数,sum(isnull(在庫数,0)+ isnull(a.発注数合計,0)) as 在庫数合計\r\n" +
-							"from 商品マスタ left outer join 在庫\r\n" +
-							"on 商品マスタ.商品ID = 在庫.商品ID\r\n" +
-							"left outer join (select 発注.商品ID,isnull(sum(発注数),0) as 発注数合計\r\n" +
-							"from 発注\r\n" +
-							"where 入庫フラグ = '0'\r\n" +
-							"group by 発注.商品ID) as a\r\n" +
-							"on 商品マスタ.商品ID = a.商品ID\r\n" +
-							"where 削除フラグ = '0'\r\n" +
-							"group by 商品マスタ.商品ID,安全在庫数\r\n" +
-							"having sum(isnull(在庫数,0)+ isnull(a.発注数合計,0)) < 安全在庫数";
-*/
-
-		sql = "select 商品マスタ.商品ID,商品名,カテゴリ名,仕入基準単価,販売単価,安全在庫数,sum(isnull(在庫数,0)+ isnull(a.発注数合計,0)) as 在庫数合計\r\n" +
-				"from 商品マスタ left outer join 在庫\r\n" +
-				"on 商品マスタ.商品ID = 在庫.商品ID\r\n" +
-				"left outer join (select 発注.商品ID,isnull(sum(発注数),0) as 発注数合計\r\n" +
-				"from 発注\r\n" +
-				"where 入庫フラグ = '0' "+
-				"group by 発注.商品ID) as a\r\n" +
+				"left join\r\n" +
+				"(select 商品ID,sum(在庫数) as 在庫数合計\r\n" +
+				"from 在庫\r\n" +
+				"group by 商品ID) as a\r\n" +
 				"on 商品マスタ.商品ID = a.商品ID\r\n" +
-				"left outer join カテゴリマスタ \r\n" +
-				"on 商品マスタ.カテゴリID = カテゴリマスタ.カテゴリID "+
-				"where 削除フラグ = '0'\r\n";
+				"left join \r\n" +
+				"(select 商品ID,sum(発注数) as 発注数合計\r\n" +
+				"from 発注\r\n" +
+				"where 入庫フラグ = '0'\r\n" +
+			    "group by 商品ID) as b\r\n" +
+				"on 商品マスタ.商品ID = b.商品ID\r\n"+
+			    "where 1 = 1 ";
 
 		//商品名とカテゴリIDどちらも入力されている場合
 		if(!(s_name.equals("")) && !(c_id.equals("未選択"))) {
@@ -337,9 +317,7 @@ public class DBAccess {
 			sql = sql + "and 商品名 like '%"+s_name+"%' ";
 		}
 
-		sql = sql + "group by 商品マスタ.商品ID,安全在庫数 ,商品名,カテゴリ名,仕入基準単価,販売単価\r\n" +
-					"order by 商品マスタ.商品ID";
-
+		sql = sql + "group by 商品マスタ.商品ID,商品名,カテゴリ名,仕入基準単価,販売単価,安全在庫数";
 
 		//selectした結果を格納する用
 		ArrayList<SyouhinBean> syohin_list = new ArrayList<SyouhinBean>();

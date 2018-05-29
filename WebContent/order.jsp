@@ -89,12 +89,12 @@
 %>
 
 		<center>
-			<h1>発注</h1>
+			<h1>発注</h1></center>
 			<div id="Enclose3">
-				<h3>検索条件</h3>
+				<center><h3>検索条件</h3></center>
 				<form action="OrderSearch" method="post">
 					<ul>
-						<li><label>商品名&emsp;：</label><%
+						<li class = "center"><label>商品名&emsp;：</label><%
  	   if(name == null || name.equals("")){
  %>
  	   		<input type="text" class="text" name="s_name" id="s_name">
@@ -105,7 +105,7 @@
  <%
  	   }
  %><br></li>
-						<li><label>カテゴリ：</label><select name="category" id="category" >
+						<li class = "center"><label>カテゴリ：</label> <select name="category" id="category" >
  <%
  	if(c_id == null || c_id.equals("未選択")){
  %>
@@ -136,13 +136,21 @@
  %>
  		</select>
 					</ul>
-					<br> 安全在庫数が下回っている商品を表示する <input type="checkbox" name="dflg"
-						value="denger" onclick="textControl(this);">
+					<center>
+						<br>
+						<div class="chkbox">
+						<input type="checkbox" id="checkbox01" name="dflg" value="denger" onclick="textControl(this);">
+						安全在庫数が下回っている商品を表示する
+						<label for="checkbox01"></label>
+						</div>
+
 						<button class="buttonB" value="検索">検索</button>
 						<br>
 					</p>
 				</form>
 			</div>
+
+			<center>
 			<br> <span id="prev">前へ</span> <span id="page"></span> <span id="next">次へ</span>
 			<form action="OrderCount" method="Post">
 
@@ -162,8 +170,8 @@
 						for (SyouhinBean syohinBean : syohin) {
 					%>
 					<tr id="border">
-						<td id="border"><input type="checkbox" name="order_check"
-							value="<%=syohinBean.getS_id()%>"></td>
+						<td id="border">
+						<input type="checkbox" name="order_check" value="<%=syohinBean.getS_id()%>"></td>
 						<td align="center"><%=syohinBean.getS_id()%></td>
 						<td id="border"><%=syohinBean.getS_name()%></td>
 						<td id="border"><%=syohinBean.getC_id()%></td>

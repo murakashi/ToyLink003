@@ -26,7 +26,8 @@
 <br>
 	<div id = "Enclose3">
 	<br>
-	<h2>実在庫数がマイナスになってしまいます</h2>
+	<h2><font color = "red">実在庫数がマイナスに<br>
+	なってしまいます</font></h2>
 	<br>
 	<br>
 	<form action="UriageIn" method="POST">

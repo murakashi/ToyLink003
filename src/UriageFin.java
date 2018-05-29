@@ -46,7 +46,13 @@ public class UriageFin extends HttpServlet {
 		String syouID = request.getParameter("syouID");//商品ID取得
 		String day = request.getParameter("day");//売上日取得
 		int salNum = Integer.parseInt(request.getParameter("salNum"));//売上個数取得
-		int tanka = Integer.parseInt(request.getParameter("tanka"));//販売単価取得
+
+		int tanka = 0;
+
+		if(request.getParameter("tanka") != null) {
+			tanka = Integer.parseInt(request.getParameter("tanka"));//販売単価取得
+		}
+
 		String br= request.getParameter("break");//破損チェックボックスの値取得
 
 		/*******入力値をセッションに入れる********/

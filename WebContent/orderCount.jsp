@@ -72,7 +72,7 @@
 			<h2>仕入先を選択し、発注数を入力してください。</h2>
 
 			<form action="OrderSum" method="Post">
-				<br> <br> 仕入先<select name="siire_id" required>
+				<br> <br> 仕入先：<select name="siire_id" required>
 					<option value="">未選択</option>
 					<%
 						if (siire == null) {
@@ -106,8 +106,8 @@
 						<th id="border" class="color" width="150">仕入基準単価</th>
 						<th id="border" class="color" width="100">販売単価</th>
 						<th id="border" class="color" width="130">安全在庫数</th>
-						<th id="border" class="color" width="130">在庫数</th>
-						<th id="border" class="color" width="50">数量</th>
+						<th id="border" class="color" width="110">在庫数</th>
+						<th id="border" class="color" width="60">数量</th>
 					</tr>
 					<%
 						if (count_arr == null) {
@@ -121,11 +121,11 @@
 						<td align="right" id="border"><%=String.format("%1$,3d",syohinBean.getHtanka())%></td>
 						<td align="right" id="border"><%=String.format("%1$,3d",syohinBean.getSafezaiko())%></td>
 						<td align="right" id="border"><%=String.format("%1$,3d",syohinBean.getZaiko())%></td>
-						<td id="border"><input type="number" name="count" size="2"
+						<td id="border"><center><input type="number" class = "text1" name="count" size="2"
 							maxlength="3" min="1" required> <input id="border"
 							type="hidden" name="s_id" value="<%=syohinBean.getS_id()%>">
 							<input id="border" type="hidden" name="s_basePrice"
-							value="<%=syohinBean.getBaseprice()%>"></td>
+							value="<%=syohinBean.getBaseprice()%>"></center></td>
 					</tr>
 					<%
 						}
@@ -141,21 +141,18 @@
 						<td align="right" id="border"><%=String.format("%1$,3d",syohinBean.getHtanka())%></td>
 						<td align="right" id="border"><%=String.format("%1$,3d",syohinBean.getSafezaiko())%></td>
 						<td align="right" id="border"><%=String.format("%1$,3d",syohinBean.getZaiko())%></td>
-						<td id="border"><input type="number" name="count" size="2"
+						<td id="border"><center><input type="number" class = "text1" name="count" size="2"
 							maxlength="3" value="<%=count_arr[i]%>" min="1" required>
 							<input id="border" type="hidden" name="s_id"
 							value="<%=syohinBean.getS_id()%>"> <input id="border"
 							type="hidden" name="s_basePrice"
-							value="<%=syohinBean.getBaseprice()%>"></td>
+							value="<%=syohinBean.getBaseprice()%>"></center></td>
 					</tr>
 					<%
 						i++;
 							}
 						}
 					%>
-
-
-
 				</table>
 <br>
 					<button class="buttonA" value="発注">発注</button>

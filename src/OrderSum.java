@@ -41,7 +41,7 @@ public class OrderSum extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(false);
 
 		//数量取得
 		String[] count_arr = request.getParameterValues("count");

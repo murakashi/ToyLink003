@@ -44,6 +44,15 @@ public class Zaiko extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		HttpSession session = request.getSession();
+
+		if(session.getAttribute("s_name") != null) {
+			session.removeAttribute("s_name");
+		}
+
+		if(session.getAttribute("c_id") != null) {
+			session.removeAttribute("c_id");
+		}
+
 		String bname = request.getParameter("bname");
 		if(bname.equals("在庫状況") || bname.equals("戻る")) {
 			DBAccess dba = new DBAccess();

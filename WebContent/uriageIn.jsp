@@ -8,6 +8,27 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="styles.css">
 <title>売上入力</title>
+
+<script>
+
+	function textControl(obj){
+
+		if(obj.checked == true){
+
+			document.getElementById("tanka").disabled = true;
+			document.getElementById("tanka").value = "";
+
+		}
+		else{
+
+			document.getElementById("tanka").disabled = false;
+
+		}
+
+	}
+
+</script>
+
 </head>
 <body>
 	<div id="header">
@@ -104,13 +125,13 @@
 						if(tanka == null){
 %>
 							<td>&emsp;<input type="number" class="text" name="tanka"
-								min="1" maxlength="7" required>&nbsp;円
+								min="1" maxlength="7" id="tanka" required>&nbsp;円
 							</td>
 <%
 						}else{
 %>
 							<td>&emsp;<input type="number" class="text" name="tanka" value="<%= tanka %>"
-									min="1" maxlength="7" required>&nbsp;円
+									min="1" maxlength="7" id="tanka" required>&nbsp;円
 							</td>
 <%
 						}
@@ -120,7 +141,7 @@
 							<td>
 								<div class="chkbox">
 									&emsp;<input type="checkbox" id="checkbox01" name="break"
-										value="hason"> <label for="checkbox01"></label>
+										value="hason" onclick="textControl(this);"> <label for="checkbox01"></label>
 								</div>
 							</td>
 						</tr>

@@ -126,7 +126,7 @@ ArrayList<CategoryBean> categorylist = (ArrayList<CategoryBean>)session.getAttri
 				<th id="border" width="150px">日時</th>
 				<th id="border" width="330px">商品名</th>
 				<th id="border" width="120px">売上数</th>
-				<th id="border" width = "120px">金額</th>
+				<th id="border" width = "170px">金額</th>
 			</tr>
 
 			<%

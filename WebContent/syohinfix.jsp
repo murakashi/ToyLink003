@@ -39,7 +39,7 @@
 						<tr>
 							<td>商品名</td>
 							<td>：</td>
-							<td><input type="text" name="s_name"
+							<td><input type="text" class = "text" name="s_name"
 								value="<%=syohinlist.get(0).getS_name()%>" maxlength="33"
 								required></td>
 						</tr>
@@ -65,21 +65,21 @@
 						<tr>
 							<td>仕入基準単価</td>
 							<td>：</td>
-							<td><input type="number" name="baseprice" size="6"
+							<td><input type="number" class = "text2" name="baseprice" size="6"
 								value="<%=syohinlist.get(0).getBaseprice()%>" maxlength="6"
 								min="1" required>円</td>
 						</tr>
 						<tr>
 							<td>販売単価</td>
 							<td>：</td>
-							<td><input type="number" name="htanka" size="6"
+							<td><input type="number" class = "text2" name="htanka" size="6"
 								value="<%=syohinlist.get(0).getHtanka()%>" maxlength="6" min="1"
 								required>円</td>
 						</tr>
 						<tr>
 							<td>安全在庫数</td>
 							<td>：</td>
-							<td><input type="number" name="safezaiko" size="6"
+							<td><input type="number" class = "text2" name="safezaiko" size="6"
 								value="<%=syohinlist.get(0).getSafezaiko()%>" maxlength="3"
 								min="1" required>個</td>
 						</tr>
